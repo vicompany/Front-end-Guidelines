@@ -3,7 +3,6 @@
 ## Module name
 
 * We define the module (class) name on the top of the document in a $module variable.
-*
 
 ```
 $module: '.foo';
