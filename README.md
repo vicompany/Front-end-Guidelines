@@ -21,6 +21,10 @@
 * And we follow [Atomic design](http://atomicdesign.bradfrost.com) as design methodology.
 * We use [Stylelint](http://stylelint.io) with our own config for checking our code.
 
+### Sass guidelines
+
+* See our [Sass guidelines](SASS.md)
+
 ## Tooling
 
 * We use [Grunt](http://gruntjs.com/) for compiling JS, CSS and other tasks.
