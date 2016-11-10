@@ -1,16 +1,18 @@
 # Front-end at VI Company - Work in Progress
 
+_All code in any code-base should look like a single person typed it, no matter how many people contributed._
+
 ## General
 
-* We highly regard accessibility and Web Standards.
-* We use progressive enhancement as much as possible.
+* We highly regard Accessibility and Web Standards.
+* We use Progressive Enhancement as much as possible.
 * We support the latest evergreen browsers (but often also older browsers, because of the previous points).
 
 ## JavaScript (ES6+)
 
-* We write vanilla JavaScript (ES6+). Not that we don't like React, Angular or the latest Framework X, but often we don't need it.
+* We write vanilla JavaScript ([ES6+](http://www.ecma-international.org/ecma-262/7.0/)). Not that we don't like React, Angular or the latest Framework X, but often we don't need it.
 * Our ES6+ code gets transpiled with [Browserify](http://browserify.org) and [Babel](https://babeljs.io) to ES5.
-* We write modular JS and use polyfills (or better [ponyfills](https://github.com/sindresorhus/ponyfill)) and common modules from NPM.
+* We write modular JS and use polyfills (or better [ponyfills](https://github.com/sindresorhus/ponyfill)) and modules from NPM.
 * We publish our own tools and shareable code on [Github](https://github.com/vicompany) and [NPM](https://www.npmjs.com/search?q=vi-company).
 * We use [ESLint](http://eslint.org) and our own [config](https://www.npmjs.com/package/eslint-config-vi) to lint our JavaScript code.
 
@@ -24,11 +26,11 @@
 
 ## Tooling
 
-* We use [Grunt](http://gruntjs.com/) for compiling JS, CSS and other tasks.
+* We use [Grunt](http://gruntjs.com/) for compiling JS, CSS, optimization and other tasks.
 
 ## Editor plugins
 
-Whether you use VS Code, Sublime Text or any other editor. You should use at least the following plugins.
+Whether you use [Visual Studio Code](https://code.visualstudio.com), [Sublime Text](https://www.sublimetext.com) or any other editor. At least you should use the following plugins.
 
 * [EditorConfig](http://editorconfig.org)
 * [ESLint](http://eslint.org)
