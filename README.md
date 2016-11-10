@@ -6,7 +6,7 @@ _All code in any code-base should look like a single person typed it, no matter 
 
 * We highly regard Accessibility and Web Standards.
 * We use Progressive Enhancement as much as possible.
-* We support the latest evergreen browsers (but often also older browsers, because of the previous points).
+* We support the latest [Evergreen Browsers](#evergreen-browsers) (but often also older browsers, because of the previous points).
 
 ## JavaScript (ES6+)
 
@@ -35,3 +35,13 @@ Whether you use [Visual Studio Code](https://code.visualstudio.com), [Sublime Te
 * [EditorConfig](http://editorconfig.org)
 * [ESLint](http://eslint.org)
 * [Stylelint](http://stylelint.io)
+
+## Additional information
+
+### Evergreen Browsers
+
+The term _evergreen browser_ refers to a browser that gets updated automatically to future versions. 
+Therefor browser versions become less of a focus and, more importantly, new web technology becomes available to users and us developers quicker.
+
+* [The Evergreen Web by Scott Hanselman](http://www.hanselman.com/blog/TheEvergreenWeb.aspx)
+* [Evergreen Browsers by Rob Eisenberg](http://eisenbergeffect.bluespire.com/evergreen-browsers/)
