@@ -12,7 +12,7 @@ _All code in any code-base should look like a single person typed it, no matter 
 
 * Codebase is modular JavaScript ([ES2015+](http://www.ecma-international.org/ecma-262/7.0/)).
 * Vanilla is preferred, but developers are free to choose a framework/library to their liking if it substantially improves product maintainability.
-* npm modules is preferred over reinvention.
+* NPM modules are preferred over reinvention.
 * Our ES2015+ codebase is transpiled using [Browserify](http://browserify.org) and [Babel](https://babeljs.io) to ES5.
 * To improve browser compatibility, use [ponyfills](https://github.com/sindresorhus/ponyfill) or polyfills. The former is preferred.
 * Code is linted using [ESLint](http://eslint.org), following the rules defined in [VI Company's config](https://www.npmjs.com/package/eslint-config-vi).
