@@ -27,7 +27,7 @@ We use [style-lint](https://github.com/vicompany/stylelint-config-vi) to enforce
 
 **Bad**
 
-```
+```scss
 .navigationSidebar {
 	display: flex;
 }
@@ -39,7 +39,7 @@ We use [style-lint](https://github.com/vicompany/stylelint-config-vi) to enforce
 
 **Good**
 
-```
+```scss
 .navigation-sidebar {
 	display: flex;
 }
