@@ -10,11 +10,12 @@ _All code in any code-base should look like a single person typed it, no matter 
 
 ## JavaScript (ES2015+)
 
-* We write vanilla JavaScript ([ES2015+](http://www.ecma-international.org/ecma-262/7.0/)). Not that we don't like React, Angular or the latest Framework X, but often we don't need it.
-* Our ES2015+ code gets transpiled with [Browserify](http://browserify.org) and [Babel](https://babeljs.io) to ES5.
-* We write modular JS and use polyfills (or better [ponyfills](https://github.com/sindresorhus/ponyfill)) and modules from NPM.
-* We publish our own tools and shareable code on [Github](https://github.com/vicompany) and [NPM](https://www.npmjs.com/search?q=vi-company).
-* We use [ESLint](http://eslint.org) and our own [config](https://www.npmjs.com/package/eslint-config-vi) to lint our JavaScript code.
+* Codebase is modular JavaScript ([ES2015+](http://www.ecma-international.org/ecma-262/7.0/)).
+* Vanilla is preferred, but developers are free to choose a framework/library to their liking if it substantially improves product maintainability.
+* NPM modules are preferred over reinvention.
+* Our ES2015+ codebase is transpiled using [Browserify](http://browserify.org) and [Babel](https://babeljs.io) to ES5.
+* To improve browser compatibility, use [ponyfills](https://github.com/sindresorhus/ponyfill) or polyfills. The former is preferred.
+* Code is linted using [ESLint](http://eslint.org), following the rules defined in [VI Company's config](https://www.npmjs.com/package/eslint-config-vi).
 
 ## CSS (Sass)
 
