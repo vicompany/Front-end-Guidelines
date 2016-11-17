@@ -382,16 +382,57 @@ $module: '.foo';
 }
 ```
 
-## Includes/extends, pseudio classes/elements and states
+## Nested selectors
 
-1. Extends
-2. Includes
-3. Properties
-4. Pseudo classes
-5. Pseudo elements
-6. Attribute selectors
-7. States
-8. Breakpoints
+* Nested selectors will be defined after the standard property declarations, with the exception of `@extend` and `@include` directives.
+	1. Extends
+	2. Includes
+	3. Standard property declarations
+	4. Pseudo classes
+	5. Pseudo elements
+	6. Attribute selectors
+	7. States
+	8. Breakpoints
+
+**Bad**
+
+```
+#{$module} {
+	&:before {
+		content: 'foo';
+	}
+
+	padding: 1rem;
+
+	@include clearfix;
+
+	@extend %container;
+
+	@include respond-to(medium) {
+		padding: 2rem;
+	}
+
+	&:hover {
+		color: $branding-2;
+
+		#{$module}__element {
+		}
+	}
+
+	&[data-module='widget'] {
+		border: 4px solid $red;
+	}
+
+	&:not(:last-of-type) {
+		border-bottom: 1px solid $gray;
+	}
+
+	&.is-active {
+		background: $branding-3;
+	}
+```
+
+**Good**
 
 ```
 #{$module} {
@@ -429,7 +470,7 @@ $module: '.foo';
 }
 ```
 
-## Module nesting
+## Module nesting TODO
 
 1. News organism with image atom
 2. Both the news organism and image atom are modified in the second example
@@ -452,7 +493,7 @@ $module: '.foo';
 </div>
 ```
 
-## Mixed modules
+## Mixed modules TODO
 
 ```
 <header class="header">
