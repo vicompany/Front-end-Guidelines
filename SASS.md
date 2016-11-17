@@ -61,7 +61,7 @@ Avoid binding to the same class in both your CSS and JavaScript as it can easily
 
 We recommend creating JavaScript-specific classes with a `.js-` hook as prefix to bind to. Don't use these class names for CSS styling!
 
-```
+```html
 <button class="button js-button-toggle">Toggle</button>
 ```
 
@@ -71,7 +71,7 @@ We use the SMACCS naming convention for global states like `.is-active` and `.is
 
 Read more about state rules [here](https://smacss.com/book/type-state).
 
-```
+```scss
 .item {
 	color: $gray;
 
@@ -89,7 +89,7 @@ Read more about state rules [here](https://smacss.com/book/type-state).
 
 **Bad**
 
-```
+```scss
 .pim {
 	position: absolute;
 	right: 0;
@@ -110,7 +110,7 @@ Read more about state rules [here](https://smacss.com/book/type-state).
 
 **Good**
 
-```
+```scss
 %motorclub {
 	position: absolute;
 	right: 0;
@@ -142,7 +142,7 @@ Read more about state rules [here](https://smacss.com/book/type-state).
 
 **Bad**
 
-```
+```scss
 $module: '.card';
 
 $card_width: 24rem;
@@ -158,7 +158,7 @@ $cardBorderColor: #ff69b4;
 
 **Good**
 
-```
+```scss
 $module: '.card';
 
 $card-width: 24rem;
@@ -183,7 +183,7 @@ $card-color-border: #ff69b4;
 
 **Bad**
 
-```
+```scss
 .navSidebar {
 	border-radius: 100%;
 }
@@ -191,7 +191,7 @@ $card-color-border: #ff69b4;
 
 **Good**
 
-```
+```scss
 $module: '.navigation-sidebar';
 
 #{$module} {
@@ -206,7 +206,7 @@ $module: '.navigation-sidebar';
 
 **Bad**
 
-```
+```scss
 #{$module} {
 	position: fixed;
 
@@ -222,7 +222,7 @@ $module: '.navigation-sidebar';
 
 **Good**
 
-```
+```scss
 #{$module} {
 	position: fixed;
 }
@@ -245,7 +245,7 @@ $module: '.navigation-sidebar';
 
 **Bad**
 
-```
+```scss
 // <button class="button--inverted--big">Button</button>
 
 $module: '.button';
@@ -269,7 +269,7 @@ $module: '.button';
 
 **Good**
 
-```
+```scss
 // <button class="button button--inverted button--big">Button</button>
 
 $module: '.button';
@@ -294,7 +294,7 @@ $module: '.button';
 
 **Bad**
 
-```
+```scss
 #{$module} {
 	background-repeat: no-repeat;
 
@@ -306,7 +306,7 @@ $module: '.button';
 
 **Good**
 
-```
+```scss
 #{$module} {
 	background: no-repeat;
 
@@ -331,7 +331,7 @@ $module: '.button';
 
 **Bad**
 
-```
+```scss
 $module: '.foo';
 
 #{$module} {
@@ -354,7 +354,7 @@ $module: '.foo';
 
 **Good**
 
-```
+```scss
 $module: '.foo';
 
 #{$module} {
@@ -396,7 +396,7 @@ $module: '.foo';
 
 **Bad**
 
-```
+```scss
 #{$module} {
 	&:before {
 		content: 'foo';
@@ -434,7 +434,7 @@ $module: '.foo';
 
 **Good**
 
-```
+```scss
 #{$module} {
 	@extend %container;
 	@include clearfix;
@@ -475,7 +475,7 @@ $module: '.foo';
 1. News organism with image atom
 2. Both the news organism and image atom are modified in the second example
 
-```
+```html
 <div class="news">
     <h1 class="news__title">...</h1>
     <div class="news__image">
@@ -495,7 +495,7 @@ $module: '.foo';
 
 ## Mixed modules TODO
 
-```
+```html
 <header class="header">
 	<div class="logo header__logo">plaatje</div>
 </header>
