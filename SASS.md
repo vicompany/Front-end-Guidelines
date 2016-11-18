@@ -33,11 +33,11 @@ We use [style-lint](https://github.com/vicompany/stylelint-config-vi) to enforce
 **Bad**
 
 ```scss
-.sgtAtArms {
+.siteContainer {
 	display: flex;
 }
 
-#prospect {
+#item {
 	border: dashed;
 }
 ```
@@ -45,11 +45,11 @@ We use [style-lint](https://github.com/vicompany/stylelint-config-vi) to enforce
 **Good**
 
 ```scss
-.sgt-at-arms {
+.site-container {
 	display: flex;
 }
 
-.prospect {
+.item {
 	border: dashed;
 }
 ```
@@ -77,27 +77,29 @@ We use the SMACCS naming convention for global states like `.is-active` and `.is
 Read more about state rules [here](https://smacss.com/book/type-state).
 
 ```scss
-.patch {
-	color: $gray;
+.label {
+	display: none;
 
 	&.is-visible {
-		color: $black;
+		display: block;
 	}
 }
 ```
 
 ## Property declarations
 
-* We use the shorthand to define properties
-* When overwriting properties we use the specific selector
+* We use the property shorthand to define property values
+* When overwriting properties we use the more specific selector
 
 **Bad**
 
 ```scss
 #{$module} {
+	padding-left: 1rem;
+
 	background-repeat: no-repeat;
 
-	&--president {
+	&--modifier {
 		background: repeat;
 	}
 }
@@ -107,9 +109,11 @@ Read more about state rules [here](https://smacss.com/book/type-state).
 
 ```scss
 #{$module} {
+	padding: 0 0 0 1rem;
+
 	background: no-repeat;
 
-	&--president {
+	&--modifier {
 		background-repeat: repeat;
 	}
 }
@@ -127,7 +131,7 @@ Read more about state rules [here](https://smacss.com/book/type-state).
 **Bad**
 
 ```scss
-$module: '.motor';
+$module: '.card';
 
 $card_width: 24rem;
 $cardBorderColor: #ff69b4;
@@ -143,7 +147,7 @@ $cardBorderColor: #ff69b4;
 **Good**
 
 ```scss
-$module: '.motor';
+$module: '.card';
 
 $card-width: 24rem;
 $card-color-border: #ff69b4;
@@ -165,18 +169,18 @@ $card-color-border: #ff69b4;
 **Bad**
 
 ```scss
-.pim {
+.foo {
 	position: absolute;
 	right: 0;
 
 	border-radius 100%;
 }
 
-.sebastiaan {
+.bar {
 	display: inline-block;
 
 	&:before {
-		@extend .pim;
+		@extend .foo;
 
 		right: 100%;
 	}
@@ -186,22 +190,22 @@ $card-color-border: #ff69b4;
 **Good**
 
 ```scss
-%motorclub {
+%placeholder {
 	position: absolute;
 	right: 0;
 
 	border-radius 100%;
 }
 
-.pim {
-	@extend %motorclub;
+.foo {
+	@extend %placeholder;
 }
 
-.sebastiaan {
+.bar {
 	display: inline-block;
 
 	&:before {
-		@extend %motorclub;
+		@extend %placeholder;
 
 		right: 100%;
 	}
@@ -224,7 +228,7 @@ $card-color-border: #ff69b4;
 **Bad**
 
 ```scss
-$module: '.prospect';
+$module: '.foo';
 
 #{$module} {
 	float: left;
@@ -247,7 +251,7 @@ $module: '.prospect';
 **Good**
 
 ```scss
-$module: '.prospect';
+$module: '.foo';
 
 #{$module} {
 	position: relative;
@@ -276,7 +280,11 @@ $module: '.prospect';
 
 ## Nested selectors
 
-* Nested selectors will be defined after the standard property declarations, with the exception of `@extend` and `@include` directives.
+* We don't nest selectors more than three levels deep. When selectors are nested to deep it is most likely:
+	1. Fragile
+	2. Overly specific
+	3. Not reusable
+* Nested selectors will be defined after the standard property declarations, with the exception of `@extend` and `@include` directives in the following order:
 	1. Extends
 	2. Includes
 	3. Standard property declarations
@@ -289,9 +297,23 @@ $module: '.prospect';
 **Bad**
 
 ```scss
+${$module} {
+	&__selector {
+		&:first-of-type {
+			p {
+				&:before {
+					content: '';
+				}
+			}
+		}
+	}
+}
+```
+
+```scss
 #{$module} {
 	&:before {
-		content: 'motorclub';
+		content: 'foo';
 	}
 
 	padding: 1rem;
@@ -311,7 +333,7 @@ $module: '.prospect';
 		}
 	}
 
-	&[data-module='motor'] {
+	&[data-module='widget'] {
 		border: 4px solid $red;
 	}
 
@@ -345,10 +367,10 @@ $module: '.prospect';
 	}
 
 	&:before {
-		content: 'motorclub';
+		content: 'foo';
 	}
 
-	&[data-module='motor'] {
+	&[data-module='widget'] {
 		border: 4px solid $red;
 	}
 
@@ -366,26 +388,39 @@ $module: '.prospect';
 
 ## Block
 
-* Module- and filenames won't be abbreviated and are lowercase with dashes.
+* Module- and filenames won't be abbreviated and are written in lowercase with dashes.
+* Module- and filenames are written in singular form: `_button.scss`.
 * We define the module (class) name on the top of the block in a `$module` variable.
-* We don't abbreviate words to define a module name.
-* Module/file names are written in singular form: `_button.scss`.
 
 **Bad**
 
 ```scss
-.vicePresident {
+.btnGroup {
 	position: absolute;
+}
+```
+
+```scss
+.forms {
+	padding: 1rem;
 }
 ```
 
 **Good**
 
 ```scss
-$module: '.vice-president';
+$module: '.button-group';
 
 #{$module} {
 	position: absolute;
+}
+```
+
+```scss
+$module: '.form';
+
+#{$module} {
+	padding: 1rem;
 }
 ```
 
@@ -529,10 +564,6 @@ $module: '.media';
 	.image {
 		margin: 1rem;
 	}
-
-	p {
-		padding: 0;
-	}
 }
 ```
 
@@ -560,10 +591,6 @@ $module: '.media';
 
 #{$module}__image {
 	margin: 1rem;
-}
-
-#{$module}__body {
-	padding: 0;
 }
 ```
 
