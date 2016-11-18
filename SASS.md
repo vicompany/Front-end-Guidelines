@@ -201,6 +201,7 @@ $module: '.navigation-sidebar';
 
 ## Elements
 
+* An element is separated from a block name by a double underscore: `__`
 * We don't use the parent selector `&` to define elements.
 * We don't use double element names when nesting elements. Read more about this [here](http://getbem.com/faq/#css-nested-elements).
 
@@ -238,20 +239,29 @@ $module: '.navigation-sidebar';
 
 ## Modifiers
 
-* Modifiers will be defined within the module using the parent selector `&`
+* An element modifier is separated from a block (or element) name by a double dash: `--`
+* Modifiers will be defined within the module using the parent selector: `&`
 * We don't use modifiers to define states.
 * We don't extend the base module, we use multiple classes: `<a class="btn btn–-big">I'm big</a>`
 * We don't use classnames with double modifiers.
 
 **Bad**
 
-```scss
-// <button class="button--inverted--big">Button</button>
+```html
+<button class="button--inverted--big">
+	<i class="button--inverted--big__icon"></i> Button
+</button>
+```
 
+```scss
 $module: '.button';
 
 #{$module} {
 	color: $branding-1;
+
+	&__icon {
+		width: 1rem;
+	}
 
 	&--inverted {
 		@extend .button;
@@ -262,6 +272,10 @@ $module: '.button';
 			@extend .button--inverted;
 
 			padding: 2rem;
+
+			&__icon {
+				width: 2rem;
+			}
 		}
 	}
 }
@@ -269,9 +283,13 @@ $module: '.button';
 
 **Good**
 
-```scss
-// <button class="button button--inverted button--big">Button</button>
+```html
+<button class="button button--inverted button--big">
+	<i class="button__icon"></i> Button
+</button>
+```
 
+```scss
 $module: '.button';
 
 #{$module} {
@@ -283,8 +301,17 @@ $module: '.button';
 
 	&--big {
 		padding: 2rem;
+
+		#{$module}__icon {
+			width: 2rem;
+		}
 	}
 }
+
+#{$module}__icon {
+	width: 1rem;
+}
+
 ```
 
 ## Property declarations
@@ -470,7 +497,7 @@ $module: '.foo';
 }
 ```
 
-## Module nesting TODO
+## Module nesting
 
 1. News organism with image atom
 2. Both the news organism and image atom are modified in the second example
@@ -497,6 +524,6 @@ $module: '.foo';
 
 ```html
 <header class="header">
-	<div class="logo header__logo">plaatje</div>
+	<img class="logo header__logo" src="/img/logo.svg" alt="Logo">
 </header>
 ```
