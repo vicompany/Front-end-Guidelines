@@ -72,10 +72,8 @@ We recommend creating JavaScript-specific classes with a `.js-` hook as prefix t
 
 ## States
 
-We use the SMACCS naming convention for global states like `.is-active` and `.is-collapsed`.
+We use the [SMACCS](https://smacss.com/book/type-state) naming convention for global states like `.is-active` and `.is-collapsed`.
 * The property value of a state can be overwritten within a module.
-
-Read more about state rules [here](https://smacss.com/book/type-state).
 
 ```scss
 .is-hidden {
