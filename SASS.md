@@ -499,25 +499,65 @@ $module: '.foo';
 
 ## Module nesting
 
-1. News organism with image atom
-2. Both the news organism and image atom are modified in the second example
+To avoid positiong or styling of blocks or elements within another block, module nesting can be used to position a module within another module (for example an atom within an organism).
+* We recommend only to use nesting for position a module within another one.
+
+**Bad**
 
 ```html
-<div class="news">
-    <h1 class="news__title">...</h1>
-    <div class="news__image">
-        <div class="image">...</div>
-    </div>
-    <div class="news__text">...</div>
+<div class="media">
+	<img class="image" src="/img/club/sven.png" alt="Road Captain">
+	<p>The Road Captain is responsible for planning and organizing all club runs.</p>
 </div>
+```
 
-<div class="news--breaking">
-    <h1 class="news__title">...</h1>
-    <div class="news__image">
-        <div class="image--fullsize">...</div>
-    </div>
-    <div class="news__text">...</div>
+```css
+$module: '.media';
+
+#{$module} {
+	padding: 1rem;
+
+	background: $gray;
+
+	.image {
+		margin: 1rem;
+	}
+
+	p {
+		padding: 0;
+	}
+}
+```
+
+**Good**
+
+```html
+<div class="media">
+	<div class="media__image">
+		<img class="img" src="/img/club/sven.png" alt="Road Captain">
+	</div>
+	<div class="media__body">
+		<p>The Road Captain is responsible for planning and organizing all club runs.</p>
+	</div>
 </div>
+```
+
+```css
+$module: '.media';
+
+#{$module} {
+	padding: 1rem;
+
+	background: $gray;
+}
+
+#{$module}__image {
+	margin: 1rem;
+}
+
+#{$module}__body {
+	padding: 0;
+}
 ```
 
 ## Mixed modules TODO
