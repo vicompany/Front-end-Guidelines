@@ -28,11 +28,11 @@ We use [style-lint](https://github.com/vicompany/stylelint-config-vi) to enforce
 **Bad**
 
 ```scss
-.navigationSidebar {
+.sgtAtArms {
 	display: flex;
 }
 
-#item {
+#prospect {
 	border: dashed;
 }
 ```
@@ -40,11 +40,11 @@ We use [style-lint](https://github.com/vicompany/stylelint-config-vi) to enforce
 **Good**
 
 ```scss
-.navigation-sidebar {
+.sgt-at-arms {
 	display: flex;
 }
 
-.item {
+.prospect {
 	border: dashed;
 }
 ```
@@ -72,10 +72,10 @@ We use the SMACCS naming convention for global states like `.is-active` and `.is
 Read more about state rules [here](https://smacss.com/book/type-state).
 
 ```scss
-.item {
+.patch {
 	color: $gray;
 
-	&.is-active {
+	&.is-visible {
 		color: $black;
 	}
 }
@@ -143,7 +143,7 @@ Read more about state rules [here](https://smacss.com/book/type-state).
 **Bad**
 
 ```scss
-$module: '.card';
+$module: '.motor';
 
 $card_width: 24rem;
 $cardBorderColor: #ff69b4;
@@ -159,7 +159,7 @@ $cardBorderColor: #ff69b4;
 **Good**
 
 ```scss
-$module: '.card';
+$module: '.motor';
 
 $card-width: 24rem;
 $card-color-border: #ff69b4;
@@ -185,7 +185,7 @@ $card-color-border: #ff69b4;
 
 ```scss
 .vicePresident {
-	border-radius: 100%;
+	position: absolute;
 }
 ```
 
@@ -195,7 +195,7 @@ $card-color-border: #ff69b4;
 $module: '.vice-president';
 
 #{$module} {
-	border-radius: 100%;
+	position: absolute;
 }
 ```
 
@@ -325,7 +325,7 @@ $module: '.button';
 #{$module} {
 	background-repeat: no-repeat;
 
-	&--pim {
+	&--president {
 		background: repeat;
 	}
 }
@@ -337,7 +337,7 @@ $module: '.button';
 #{$module} {
 	background: no-repeat;
 
-	&--pim {
+	&--president {
 		background-repeat: repeat;
 	}
 }
@@ -446,7 +446,7 @@ $module: '.prospect';
 		}
 	}
 
-	&[data-module='widget'] {
+	&[data-module='motor'] {
 		border: 4px solid $red;
 	}
 
@@ -483,7 +483,7 @@ $module: '.prospect';
 		content: 'motorclub';
 	}
 
-	&[data-module='widget'] {
+	&[data-module='motor'] {
 		border: 4px solid $red;
 	}
 
