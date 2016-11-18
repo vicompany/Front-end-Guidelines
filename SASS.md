@@ -560,10 +560,37 @@ $module: '.media';
 }
 ```
 
-## Mixed modules TODO
+## Module mix
+
+Mixing of modules is a technique for using different BEM entities on a single DOM node. Read more about mixing modules [here](https://en.bem.info/methodology/quick-start/#mix)
+* Combine the behavior and styles of multiple blocks without duplicating code.
+* Create new blocks based on existing ones.
 
 ```html
 <header class="header">
 	<img class="logo header__logo" src="/img/logo.svg" alt="Logo">
 </header>
+```
+
+```css
+$module: '.header';
+
+#{$module} {
+	background: $white;
+}
+
+#{$module}__logo {
+	&:hover {
+		transform: scale(2);
+	}
+}
+```
+
+```css
+$module: '.logo';
+
+#{$module} {
+	max-width: 10rem;
+	padding: 1rem;
+}
 ```
