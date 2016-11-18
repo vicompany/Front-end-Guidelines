@@ -1,30 +1,31 @@
-# SASS guidelines - Work in Progress
+# SASS guidelines
 
 ## Table of contents
-- [CSS/SASS](#css-sass)
+- [CSS](#css)
   * [Formatting](#formatting)
   * [ID selectors](#id-selectors)
   * [JavaScript hooks](#javascript-hooks)
   * [States](#states)
-  * [Extend directives](#extend-directives)
-  * [Variable names](#variable-names)
-- [BEM](#bem)
-  * [Block](#block)
-  * [Elements](#elements)
-  * [Modifiers](#modifiers)
   * [Property declarations](#property-declarations)
+- [SASS](#sass)
+  * [Variable names](#variable-names)
+  * [Extend directives](#extend-directives)
   * [Property order](#property-order)
   * [Nested selectors](#nested-selectors)
+- [BEM](#bem)
+  * [Block](#block)
+  * [Element](#element)
+  * [Modifier](#modifier)
   * [Module nesting](#module-nesting)
   * [Module mix](#module-mix)
 
-# CSS/SASS
+# CSS
 
 ## Formatting
 
 We use [style-lint](https://github.com/vicompany/stylelint-config-vi) to enforce consistent conventions and avoid errors in our stylesheets.
 
-* Write rule reclarations in lowercase.
+* Write rule reclarations (selector and properties) in lowercase.
 * Use dashes, not camelCase in class names.
 	* Double underscores `__` and double dashes `--` are allowed when using BEM.
 * Do not use ID selectors.
@@ -85,6 +86,76 @@ Read more about state rules [here](https://smacss.com/book/type-state).
 }
 ```
 
+## Property declarations
+
+* We use the shorthand to define properties
+* When overwriting properties we use the specific selector
+
+**Bad**
+
+```scss
+#{$module} {
+	background-repeat: no-repeat;
+
+	&--president {
+		background: repeat;
+	}
+}
+```
+
+**Good**
+
+```scss
+#{$module} {
+	background: no-repeat;
+
+	&--president {
+		background-repeat: repeat;
+	}
+}
+```
+
+# SASS
+
+## Variable names
+
+* We recommend variable names to be prefixed by type: `$color-**` or `$font-**`
+* Names will be written in lowercase
+* We use dashes to separate words in variable identifiers: `$font-size-xl`
+* Variables only used within one module will be prefixed by the name of the module:
+
+**Bad**
+
+```scss
+$module: '.motor';
+
+$card_width: 24rem;
+$cardBorderColor: #ff69b4;
+
+#{$module} {
+	width: $card_width;
+	margin-left: ($cardWidth / 2);
+
+	border: 1px solid $cardBorderColor;
+}
+```
+
+**Good**
+
+```scss
+$module: '.motor';
+
+$card-width: 24rem;
+$card-color-border: #ff69b4;
+
+#{$module} {
+	width: $card-width;
+	margin-left: ($card-width / 2);
+
+	border: 1px solid $card-color-border;
+}
+```
+
 ## Extend directives
 
 `@extend` should be avoided because it has unintuitive, unexpected and potentially dangerous behavior, especially when used with nested selectors. Even extending top-level placeholder selectors can cause problems if the order of selectors ends up changing later.
@@ -133,216 +204,6 @@ Read more about state rules [here](https://smacss.com/book/type-state).
 		@extend %motorclub;
 
 		right: 100%;
-	}
-}
-```
-
-## Variable names
-
-* We recommend variable names to be prefixed by type: `$color-**` or `$font-**`
-* Names will be written in lowercase
-* We use dashes to separate words in variable identifiers: `$font-size-xl`
-* Variables only used within one module will be prefixed by the name of the module:
-
-**Bad**
-
-```scss
-$module: '.motor';
-
-$card_width: 24rem;
-$cardBorderColor: #ff69b4;
-
-#{$module} {
-	width: $card_width;
-	margin-left: ($cardWidth / 2);
-
-	border: 1px solid $cardBorderColor;
-}
-```
-
-**Good**
-
-```scss
-$module: '.motor';
-
-$card-width: 24rem;
-$card-color-border: #ff69b4;
-
-#{$module} {
-	width: $card-width;
-	margin-left: ($card-width / 2);
-
-	border: 1px solid $card-color-border;
-}
-```
-
-# BEM
-
-## Block
-
-* Module- and filenames won't be abbreviated and are lowercase with dashes.
-* We define the module (class) name on the top of the block in a `$module` variable.
-* We don't abbreviate words to define a module name.
-* Module/file names are written in singular form: `_button.scss`.
-
-**Bad**
-
-```scss
-.vicePresident {
-	position: absolute;
-}
-```
-
-**Good**
-
-```scss
-$module: '.vice-president';
-
-#{$module} {
-	position: absolute;
-}
-```
-
-## Elements
-
-* An element is separated from a block name by a double underscore: `__`
-* We don't use the parent selector `&` to define elements.
-* We don't use double element names when nesting elements. Read more about this [here](http://getbem.com/faq/#css-nested-elements).
-
-**Bad**
-
-```scss
-#{$module} {
-	position: fixed;
-
-	&__element {
-		display: inline-block;
-
-		&__link {
-			color: $black;
-		}
-	}
-}
-```
-
-**Good**
-
-```scss
-#{$module} {
-	position: fixed;
-}
-
-#{$module}__element {
-	display: inline-block;
-}
-
-#{$module}__link {
-	color: $black;
-}
-```
-
-## Modifiers
-
-* An element modifier is separated from a block (or element) name by a double dash: `--`
-* Modifiers will be defined within the module using the parent selector: `&`
-* We don't use modifiers to define states.
-* We don't extend the base module, we use multiple classes: `<a class="btn btn–-big">I'm big</a>`
-* We don't use classnames with double modifiers.
-
-**Bad**
-
-```html
-<button class="button--inverted--big">
-	<i class="button--inverted--big__icon"></i> Button
-</button>
-```
-
-```scss
-$module: '.button';
-
-#{$module} {
-	color: $branding-1;
-
-	&__icon {
-		width: 1rem;
-	}
-
-	&--inverted {
-		@extend .button;
-
-		color: $branding-2;
-
-		&--big{
-			@extend .button--inverted;
-
-			padding: 2rem;
-
-			&__icon {
-				width: 2rem;
-			}
-		}
-	}
-}
-```
-
-**Good**
-
-```html
-<button class="button button--inverted button--big">
-	<i class="button__icon"></i> Button
-</button>
-```
-
-```scss
-$module: '.button';
-
-#{$module} {
-	color: $branding-1;
-
-	&--inverted {
-		color: $branding-2;
-	}
-
-	&--big {
-		padding: 2rem;
-
-		#{$module}__icon {
-			width: 2rem;
-		}
-	}
-}
-
-#{$module}__icon {
-	width: 1rem;
-}
-
-```
-
-## Property declarations
-
-* We use the shorthand to define properties
-* When overwriting properties we use the specific selector
-
-**Bad**
-
-```scss
-#{$module} {
-	background-repeat: no-repeat;
-
-	&--president {
-		background: repeat;
-	}
-}
-```
-
-**Good**
-
-```scss
-#{$module} {
-	background: no-repeat;
-
-	&--president {
-		background-repeat: repeat;
 	}
 }
 ```
@@ -499,6 +360,148 @@ $module: '.prospect';
 		padding: 2rem;
 	}
 }
+```
+
+# BEM
+
+## Block
+
+* Module- and filenames won't be abbreviated and are lowercase with dashes.
+* We define the module (class) name on the top of the block in a `$module` variable.
+* We don't abbreviate words to define a module name.
+* Module/file names are written in singular form: `_button.scss`.
+
+**Bad**
+
+```scss
+.vicePresident {
+	position: absolute;
+}
+```
+
+**Good**
+
+```scss
+$module: '.vice-president';
+
+#{$module} {
+	position: absolute;
+}
+```
+
+## Element
+
+* An element is separated from a block name by a double underscore: `__`
+* We don't use the parent selector `&` to define elements.
+* We don't use double element names when nesting elements. Read more about this [here](http://getbem.com/faq/#css-nested-elements).
+
+**Bad**
+
+```scss
+#{$module} {
+	position: fixed;
+
+	&__element {
+		display: inline-block;
+
+		&__link {
+			color: $black;
+		}
+	}
+}
+```
+
+**Good**
+
+```scss
+#{$module} {
+	position: fixed;
+}
+
+#{$module}__element {
+	display: inline-block;
+}
+
+#{$module}__link {
+	color: $black;
+}
+```
+
+## Modifier
+
+* An element modifier is separated from a block (or element) name by a double dash: `--`
+* Modifiers will be defined within the module using the parent selector: `&`
+* We don't use modifiers to define states.
+* We don't extend the base module, we use multiple classes: `<a class="btn btn–-big">I'm big</a>`
+* We don't use classnames with double modifiers.
+
+**Bad**
+
+```html
+<button class="button--inverted--big">
+	<i class="button--inverted--big__icon"></i> Button
+</button>
+```
+
+```scss
+$module: '.button';
+
+#{$module} {
+	color: $branding-1;
+
+	&__icon {
+		width: 1rem;
+	}
+
+	&--inverted {
+		@extend .button;
+
+		color: $branding-2;
+
+		&--big{
+			@extend .button--inverted;
+
+			padding: 2rem;
+
+			&__icon {
+				width: 2rem;
+			}
+		}
+	}
+}
+```
+
+**Good**
+
+```html
+<button class="button button--inverted button--big">
+	<i class="button__icon"></i> Button
+</button>
+```
+
+```scss
+$module: '.button';
+
+#{$module} {
+	color: $branding-1;
+
+	&--inverted {
+		color: $branding-2;
+	}
+
+	&--big {
+		padding: 2rem;
+
+		#{$module}__icon {
+			width: 2rem;
+		}
+	}
+}
+
+#{$module}__icon {
+	width: 1rem;
+}
+
 ```
 
 ## Module nesting
