@@ -359,7 +359,7 @@ $module: '.button';
 **Bad**
 
 ```scss
-$module: '.foo';
+$module: '.prospect';
 
 #{$module} {
 	float: left;
@@ -382,7 +382,7 @@ $module: '.foo';
 **Good**
 
 ```scss
-$module: '.foo';
+$module: '.prospect';
 
 #{$module} {
 	position: relative;
@@ -426,7 +426,7 @@ $module: '.foo';
 ```scss
 #{$module} {
 	&:before {
-		content: 'foo';
+		content: 'motorclub';
 	}
 
 	padding: 1rem;
@@ -480,7 +480,7 @@ $module: '.foo';
 	}
 
 	&:before {
-		content: 'foo';
+		content: 'motorclub';
 	}
 
 	&[data-module='widget'] {
