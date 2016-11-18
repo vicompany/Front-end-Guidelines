@@ -1,18 +1,22 @@
 # SASS guidelines - Work in Progress
 
 ## Table of contents
-* CSS/SASS
-	* Formatting
-	* ID selectors
-	* Javacript hooks
-	* States
-	* Extend directives
-	* Variable names
-* BEM
-	*
-	*
-	*
-	*
+- [CSS/SASS](#css-sass)
+  * [Formatting](#formatting)
+  * [ID selectors](#id-selectors)
+  * [JavaScript hooks](#javascript-hooks)
+  * [States](#states)
+  * [Extend directives](#extend-directives)
+  * [Variable names](#variable-names)
+- [BEM](#bem)
+  * [Block](#block)
+  * [Elements](#elements)
+  * [Modifiers](#modifiers)
+  * [Property declarations](#property-declarations)
+  * [Property order](#property-order)
+  * [Nested selectors](#nested-selectors)
+  * [Module nesting](#module-nesting)
+  * [Module mix](#module-mix)
 
 # CSS/SASS
 
@@ -81,7 +85,7 @@ Read more about state rules [here](https://smacss.com/book/type-state).
 }
 ```
 
-## Extend directive
+## Extend directives
 
 `@extend` should be avoided because it has unintuitive, unexpected and potentially dangerous behavior, especially when used with nested selectors. Even extending top-level placeholder selectors can cause problems if the order of selectors ends up changing later.
 
