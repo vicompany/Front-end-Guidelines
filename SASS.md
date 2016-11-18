@@ -73,15 +73,26 @@ We recommend creating JavaScript-specific classes with a `.js-` hook as prefix t
 ## States
 
 We use the SMACCS naming convention for global states like `.is-active` and `.is-collapsed`.
+* The property value of a state can be overwritten within a module.
 
 Read more about state rules [here](https://smacss.com/book/type-state).
+
+```scss
+.is-hidden {
+	display: none;
+}
+
+.is-visible {
+	display: block;
+}
+```
 
 ```scss
 .label {
 	display: none;
 
 	&.is-visible {
-		display: block;
+		display: inline-block;
 	}
 }
 ```
@@ -164,7 +175,7 @@ $card-color-border: #ff69b4;
 
 `@extend` should be avoided because it has unintuitive, unexpected and potentially dangerous behavior, especially when used with nested selectors. Even extending top-level placeholder selectors can cause problems if the order of selectors ends up changing later.
 
-* Using the `@extend` directive is allowed for extending placeholder selectors
+* Using the `@extend` directive is allowed for extending placeholder selectors.
 
 **Bad**
 
@@ -228,7 +239,7 @@ $card-color-border: #ff69b4;
 **Bad**
 
 ```scss
-$module: '.foo';
+$module: '.motor';
 
 #{$module} {
 	float: left;
@@ -251,7 +262,7 @@ $module: '.foo';
 **Good**
 
 ```scss
-$module: '.foo';
+$module: '.motor';
 
 #{$module} {
 	position: relative;
