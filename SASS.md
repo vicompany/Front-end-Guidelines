@@ -184,7 +184,7 @@ $card-color-border: #ff69b4;
 **Bad**
 
 ```scss
-.sgtAtArms {
+.vicePresident {
 	border-radius: 100%;
 }
 ```
@@ -192,7 +192,7 @@ $card-color-border: #ff69b4;
 **Good**
 
 ```scss
-$module: '.sgt-at-arms';
+$module: '.vice-president';
 
 #{$module} {
 	border-radius: 100%;
