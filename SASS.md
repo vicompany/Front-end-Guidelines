@@ -184,7 +184,7 @@ $card-color-border: #ff69b4;
 **Bad**
 
 ```scss
-.navSidebar {
+.sgtAtArms {
 	border-radius: 100%;
 }
 ```
@@ -192,7 +192,7 @@ $card-color-border: #ff69b4;
 **Good**
 
 ```scss
-$module: '.navigation-sidebar';
+$module: '.sgt-at-arms';
 
 #{$module} {
 	border-radius: 100%;
