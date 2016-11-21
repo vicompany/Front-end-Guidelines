@@ -645,40 +645,67 @@ $module: '.form';
 * An element modifier is separated from a block (or element) name by a double dash: `--`
 * Modifiers will be defined within the module using the parent selector: `&`
 * We don't use modifiers to define states.
-* We don't extend the base module, we use multiple classes: `<a class="btn btn–-big">I'm big</a>`
+* We don't extend the base module, instead we use multiple classes: `<a class="btn btn–-big">I'm big</a>`
 * We don't use classnames with double modifiers: `btn--inverted--big`
 
 **Bad**
 
 ```html
-<button class="button--inverted--big">
-	<i class="button--inverted--big__icon"></i> Button
-</button>
+<nav class="navigation--stacked">
+	<ul class="navigation__list">
+		<li class="navigation__item">
+			<a href="#" class="navigation__link">Home</a>
+		</li>
+		<li class="navigation__item">
+			<a href="#" class="navigation__link">About</a>
+			<ul class="navigation__list--sub">
+				<li class="navigation__item">
+					<a href="#" class="navigation__link">Members</a>
+				</li>
+				<li class="navigation__item">
+					<a href="#" class="navigation__link">Join us</a>
+				</li>
+			</ul>
+		</li>
+		<li class="navigation__item">
+			<a href="#" class="navigation__link">Contact</a>
+		</li>
+	</ul>
+</nav>
 ```
 
 ```scss
-$module: '.button';
+$module: '.navigation';
 
 #{$module} {
-	color: $branding-1;
+	padding: 1rem;
 
-	&__icon {
-		width: 1rem;
+	&__item {
+		position: relative;
+
+		display: inline-block;
+
+		&:hover {
+			#{$module}__list--sub {
+				left: auto;
+			}
+		}
 	}
 
-	&--inverted {
-		@extend .button;
+	&__list {
+		width: 10rem;
 
-		color: $branding-2;
+		&--sub {
+			position: absolute;
+      		left: -9999px;
+		}
+	}
 
-		&--big {
-			@extend .button--inverted;
+	&--stacked {
+		padding: 2rem;
 
-			padding: 2rem;
-
-			&__icon {
-				width: 2rem;
-			}
+		#{$module}__item {
+			display: block;
 		}
 	}
 }
@@ -687,34 +714,62 @@ $module: '.button';
 **Good**
 
 ```html
-<button class="button button--inverted button--big">
-	<i class="button__icon"></i> Button
-</button>
+<nav class="navigation navigation--stacked">
+	<ul class="navigation__list">
+		<li class="navigation__item">
+			<a href="#" class="navigation__link">Home</a>
+		</li>
+		<li class="navigation__item">
+			<a href="#" class="navigation__link">About</a>
+			<ul class="navigation__list navigation__list--sub">
+				<li class="navigation__item">
+					<a href="#" class="navigation__link">Members</a>
+				</li>
+				<li class="navigation__item">
+					<a href="#" class="navigation__link">Join us</a>
+				</li>
+			</ul>
+		</li>
+		<li class="navigation__item">
+			<a href="#" class="navigation__link">Contact</a>
+		</li>
+	</ul>
+</nav>
 ```
 
 ```scss
-$module: '.button';
+$module: '.navigation';
 
 #{$module} {
-	color: $branding-1;
+	padding: 1rem;
 
-	&--inverted {
-		color: $branding-2;
-	}
-
-	&--big {
-		padding: 2rem;
-
-		#{$module}__icon {
-			width: 2rem;
-		}
-	}
+    &--stacked {
+      padding: 2rem;
+    }
 }
 
-#{$module}__icon {
-	width: 1rem;
+#{$module}__item {
+  position: relative;
+
+  display: inline-block;
+
+  #{$module}--stacked & {
+    display: block;
+  }
 }
 
+#{$module}__list {
+    width: 10rem;
+
+    &--sub {
+      position: absolute;
+      left: -9999px;
+
+      #{$module}__item:hover > & {
+        left: auto;
+      }
+    }
+}
 ```
 
 ## Module nesting
