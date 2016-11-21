@@ -475,7 +475,7 @@ $module: '.form';
 
 * An element is separated from a block name by a double underscore: `__`
 * We don't use the parent selector `&` to define elements.
-* We don't use double element names when nesting elements. Read more about this [here](http://getbem.com/faq/#css-nested-elements).
+* We don't combine element names `.module__element__link` when nesting elements. Read more about this [here](http://getbem.com/faq/#css-nested-elements).
 
 **Bad**
 
