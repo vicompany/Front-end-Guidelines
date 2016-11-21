@@ -511,6 +511,17 @@ $breakpoints: (
 
 # BEM
 
+We use the [BEM](https://en.bem.info) approach for writing our CSS classes.
+* BEM divides modules into independent blocks.
+* It gives your CSS classes more transparency and meaning to other developers.
+* BEM modules are far more strict and informative which makes it ideal for developers on larger projects.
+
+```scss
+.block {}
+.block__element {}
+.block--modifier {}
+```
+
 ## Block
 
 * Module- and filenames won't be abbreviated and are written in lowercase with dashes.
