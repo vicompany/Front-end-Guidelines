@@ -604,7 +604,7 @@ $module: '.form';
 * Modifiers will be defined within the module using the parent selector: `&`
 * We don't use modifiers to define states.
 * We don't extend the base module, we use multiple classes: `<a class="btn btn–-big">I'm big</a>`
-* We don't use classnames with double modifiers: `btn--inverted--big`;
+* We don't use classnames with double modifiers: `btn--inverted--big`
 
 **Bad**
 
@@ -629,7 +629,7 @@ $module: '.button';
 
 		color: $branding-2;
 
-		&--big{
+		&--big {
 			@extend .button--inverted;
 
 			padding: 2rem;
