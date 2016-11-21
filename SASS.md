@@ -651,6 +651,36 @@ $module: '.form';
 **Bad**
 
 ```html
+<a href="#" class="button--inverted--large">Go</a>
+```
+
+```scss
+$module: '.button';
+
+#{$module} {
+	padding: 1rem;
+
+	color: $white;
+
+	background: $black;
+
+	&--inverted {
+		@extend #{$module};
+
+		color: $black;
+
+		background: transparent;
+
+		&--large {
+			@extend #{$module}--inverted;
+
+			padding: 2rem;
+		}
+	}
+}
+```
+
+```html
 <nav class="navigation--stacked">
 	<ul class="navigation__list">
 		<li class="navigation__item">
@@ -715,11 +745,13 @@ $module: '.navigation';
 }
 ```
 
+**Good**
+
 ```html
-<a class="button--inverted--large"></a>
+<a href="#" class="button button--inverted button--large">Go</a>
 ```
 
-```css
+```scss
 $module: '.button';
 
 #{$module} {
@@ -730,23 +762,16 @@ $module: '.button';
 	background: $black;
 
 	&--inverted {
-		@extend #{$module};
-
 		color: $black;
 
 		background: transparent;
+	}
 
-		&--large {
-			@extend #{$module}--inverted;
-
-			padding: 2rem;
-		}
+	&--large {
+		padding: 2rem;
 	}
 }
-
 ```
-
-**Good**
 
 ```html
 <nav class="navigation navigation--stacked">
