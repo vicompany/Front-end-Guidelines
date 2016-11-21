@@ -418,7 +418,7 @@ ${$module} {
 
 ## Breakpoints
 
-*
+* We use a custom `respond-to` mixin to define our breakpoints.
 *
 
 **Bad**
