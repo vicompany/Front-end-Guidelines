@@ -420,7 +420,7 @@ ${$module} {
 
 * We use a custom `respond-to` mixin to define our breakpoints.
 * We recommend to limit the number of breakpoints to three: `small`, `medium` and `large`.
-* It is recommended to combine the
+* It is recommended to use every breakpoint query once within a block, element and modifier.
 
 **Bad**
 
@@ -593,7 +593,7 @@ $module: '.form';
 * Modifiers will be defined within the module using the parent selector: `&`
 * We don't use modifiers to define states.
 * We don't extend the base module, we use multiple classes: `<a class="btn btn–-big">I'm big</a>`
-* We don't use classnames with double modifiers.
+* We don't use classnames with double modifiers: `btn--inverted--big`;
 
 **Bad**
 
