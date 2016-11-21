@@ -232,6 +232,7 @@ $card-color-border: #ff69b4;
 	* Animation
 	* Other
 	* Transitions
+* Although we recommend a newline between the different property groups, it is allowed to combine different groups in smaller modules.
 * For complete list of the propety order see our [stylelint-config](https://github.com/vicompany/stylelint-config-vi/blob/master/index.js).
 
 **Bad**
@@ -283,6 +284,25 @@ $module: '.motor';
 	cursor: pointer;
 	opacity: 0.9;
 
+	transition: height 2s;
+}
+```
+
+```scss
+$module: '.motor';
+
+#{$module} {
+	position: relative;
+	right: 0;
+
+	float: left;
+	display: block;
+
+	color: $branding-1;
+	text-align: right;
+
+	animation: infinite;
+	opacity: 0.9;
 	transition: height 2s;
 }
 ```
