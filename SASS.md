@@ -696,12 +696,16 @@ $module: '.navigation';
 		width: 10rem;
 
 		&--sub {
+			@extend #{$module}__list;
+
 			position: absolute;
       		left: -9999px;
 		}
 	}
 
 	&--stacked {
+		@extend #{$module};
+
 		padding: 2rem;
 
 		#{$module}__item {
