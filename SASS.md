@@ -715,6 +715,37 @@ $module: '.navigation';
 }
 ```
 
+```html
+<a class="button--inverted--large"></a>
+```
+
+```css
+$module: '.button';
+
+#{$module} {
+	padding: 1rem;
+
+	color: $white;
+
+	background: $black;
+
+	&--inverted {
+		@extend #{$module};
+
+		color: $black;
+
+		background: transparent;
+
+		&--large {
+			@extend #{$module}--inverted;
+
+			padding: 2rem;
+		}
+	}
+}
+
+```
+
 **Good**
 
 ```html
