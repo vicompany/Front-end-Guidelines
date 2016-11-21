@@ -419,16 +419,94 @@ ${$module} {
 ## Breakpoints
 
 * We use a custom `respond-to` mixin to define our breakpoints.
-*
+* We recommend to limit the number of breakpoints to three: `small`, `medium` and `large`.
+* It is recommended to combine the
 
 **Bad**
 
+```scss
+$breakpoints: (
+	'tiny':			20rem,
+	'small':		35rem,
+	'medium':		50rem,
+	'large':		65rem,
+	'extra-large': 		80rem,
+	'huge':			90rem
+);
 ```
+
+```scss
+#{$module} {
+	padding: 1rem;
+
+	border: 1px dashed $white;
+
+	@include respond-to(medium) {
+		padding: 2rem;
+
+		#{$module}__item {
+			font-size: $font-size-m;
+		}
+	}
+
+	&:after {
+		margin: 1rem;
+
+		content: '';
+
+		@include respond-to(medium) {
+			padding: 2rem;
+		}
+	}
+}
+
+#{$module}__item {
+	background: $black;
+
+	font-size: $font-size-s;
+}
 ```
 
 **Good**
 
+```scss
+$breakpoints: (
+	'small':	35rem,
+	'medium':	60rem,
+	'large':	80rem
+);
 ```
+
+```scss
+#{$module} {
+	padding: 1rem;
+
+	border: 1px dashed $white;
+
+	&:after {
+		margin: 1rem;
+
+		content: '';
+	}
+
+	@include respond-to(medium) {
+		padding: 2rem;
+
+		&:after {
+			margin: 2rem;
+		}
+	}
+}
+
+#{$module}__item {
+	background: $black;
+
+	font-size: $font-size-s;
+
+	@include respond-to(medium) {
+		font-size: $font-size-m;
+	}
+}
 ```
 
 # BEM
@@ -600,7 +678,7 @@ To avoid positiong or styling of blocks or elements within another block, module
 </div>
 ```
 
-```css
+```scss
 $module: '.media';
 
 #{$module} {
@@ -627,7 +705,7 @@ $module: '.media';
 </div>
 ```
 
-```css
+```scss
 $module: '.media';
 
 #{$module} {
@@ -653,7 +731,7 @@ Mixing of modules is a technique for using different BEM entities on a single DO
 </header>
 ```
 
-```css
+```scss
 $module: '.header';
 
 #{$module} {
@@ -667,7 +745,7 @@ $module: '.header';
 }
 ```
 
-```css
+```scss
 $module: '.logo';
 
 #{$module} {
