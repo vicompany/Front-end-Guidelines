@@ -523,7 +523,7 @@ We use the [BEM](https://en.bem.info) approach for writing our CSS classes.
 ```
 
 BEM ensures that everyone who participates in the development of a project works with a single codebase and speaks the same language. Using proper naming will prepare you for the changes in the code in the future.
-* No tag name or id selectors.
+* No tag name or ID selectors.
 * No dependencies on other blocks or elements. More about module nesting can be read [here](#module-nesting).
 
 **Bad**
