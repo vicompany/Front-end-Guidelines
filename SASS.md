@@ -680,6 +680,36 @@ $module: '.button';
 }
 ```
 
+**Good**
+
+```html
+<a href="#" class="button button--inverted button--large">Go</a>
+```
+
+```scss
+$module: '.button';
+
+#{$module} {
+	padding: 1rem;
+
+	color: $white;
+
+	background: $black;
+
+	&--inverted {
+		color: $black;
+
+		background: transparent;
+	}
+
+	&--large {
+		padding: 2rem;
+	}
+}
+```
+
+**Bad**
+
 ```html
 <nav class="navigation--stacked">
 	<ul class="navigation__list">
@@ -746,32 +776,6 @@ $module: '.navigation';
 ```
 
 **Good**
-
-```html
-<a href="#" class="button button--inverted button--large">Go</a>
-```
-
-```scss
-$module: '.button';
-
-#{$module} {
-	padding: 1rem;
-
-	color: $white;
-
-	background: $black;
-
-	&--inverted {
-		color: $black;
-
-		background: transparent;
-	}
-
-	&--large {
-		padding: 2rem;
-	}
-}
-```
 
 ```html
 <nav class="navigation navigation--stacked">
