@@ -12,6 +12,7 @@
   * [Extend directives](#extend-directives)
   * [Property order](#property-order)
   * [Nested selectors](#nested-selectors)
+  * [Breakpoints](#breakpoints)
 - [BEM](#bem)
   * [Block](#block)
   * [Element](#element)
@@ -64,7 +65,7 @@ While it is possible to select elements by ID in CSS, it should generally be con
 
 Avoid binding to the same class in both your CSS and JavaScript as it can easily lead to breaking code when refactoring CSS.
 
-We recommend creating JavaScript-specific classes with a `.js-` hook as prefix to bind to. Don't use these class names for CSS styling!
+We recommend creating JavaScript-specific classes with a `.js-` hook as prefix to bind to. Never use these class names for CSS styling!
 
 ```html
 <button class="button js-button-toggle">Toggle</button>
@@ -72,8 +73,10 @@ We recommend creating JavaScript-specific classes with a `.js-` hook as prefix t
 
 ## States
 
-We use the [SMACCS](https://smacss.com/book/type-state) naming convention for global states like `.is-active` and `.is-collapsed`.
-* The property value of a state can be overwritten within a module.
+We use the [SMACCS](https://smacss.com/book/type-state) naming convention for (global) states like `.is-active` and `.is-collapsed`.
+* State styles indicate a JavaScript dependency.
+* State styles are easy to select and apply with JavaScript.
+* The property value of a state may be overwritten within a module.
 
 ```scss
 .is-hidden {
@@ -86,7 +89,7 @@ We use the [SMACCS](https://smacss.com/book/type-state) naming convention for gl
 ```
 
 ```scss
-.label {
+.toggle {
 	display: none;
 
 	&.is-visible {
@@ -411,6 +414,21 @@ ${$module} {
 		padding: 2rem;
 	}
 }
+```
+
+## Breakpoints
+
+*
+*
+
+**Bad**
+
+```
+```
+
+**Good**
+
+```
 ```
 
 # BEM
