@@ -35,7 +35,7 @@ We use [style-lint](https://github.com/vicompany/stylelint-config-vi) to enforce
 
 ```scss
 .siteContainer {
-	display: flex;
+	max-width: 80rem;
 }
 
 #item {
@@ -47,7 +47,7 @@ We use [style-lint](https://github.com/vicompany/stylelint-config-vi) to enforce
 
 ```scss
 .site-container {
-	display: flex;
+	max-width: 80rem;
 }
 
 .item {
@@ -522,6 +522,48 @@ We use the [BEM](https://en.bem.info) approach for writing our CSS classes.
 .block--modifier {}
 ```
 
+BEM ensures that everyone who participates in the development of a project works with a single codebase and speaks the same language. Using proper naming will prepare you for the changes in the code in the future.
+* No tag name or id selectors.
+* No dependencies on other blocks or elements. More about module nesting can be read [here](#module-nesting).
+
+**Bad**
+
+```scss
+.block {
+	padding: 1rem;
+
+	p {
+		padding: 0;
+
+		color: $white;
+	}
+
+	.other-block {
+		background: $black;
+	}
+}
+```
+
+**Good**
+
+```scss
+$module: '.block';
+
+#{$module} {
+	padding: 1rem;
+}
+
+#{$module}__text {
+	padding: 0;
+
+	color: $white;
+}
+
+#{$module}__other-block {
+	background: $black;
+}
+```
+
 ## Block
 
 * Module- and filenames won't be abbreviated and are written in lowercase with dashes.
@@ -732,7 +774,7 @@ $module: '.media';
 
 ## Module mix
 
-Mixing of modules is a technique for using different BEM entities on a single DOM node. Read more about mixing modules [here](https://en.bem.info/methodology/quick-start/#mix)
+Mixing of modules is a technique for using different BEM entities on a single DOM node. Read more about mixing modules [here](https://en.bem.info/methodology/quick-start/#mix).
 * Combine the behavior and styles of multiple blocks without duplicating code.
 * Create new blocks based on existing ones.
 
