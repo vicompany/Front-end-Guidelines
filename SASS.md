@@ -151,7 +151,7 @@ $cardBorderColor: #ff69b4;
 
 #{$module} {
 	width: $card_width;
-	margin-left: ($cardWidth / 2);
+	margin-left: $cardWidth / 2;
 
 	border: 1px solid $cardBorderColor;
 }
@@ -167,7 +167,7 @@ $card-color-border: #ff69b4;
 
 #{$module} {
 	width: $card-width;
-	margin-left: ($card-width / 2);
+	margin-left: $card-width / 2;
 
 	border: 1px solid $card-color-border;
 }
