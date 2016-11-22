@@ -106,12 +106,12 @@ We use the [SMACCS](https://smacss.com/book/type-state) naming convention for (g
 **Bad**
 
 ```scss
-#{$module} {
+.foo {
 	padding-left: 1rem;
 
 	background-repeat: no-repeat;
 
-	&--modifier {
+	&:last-child {
 		background: repeat;
 	}
 }
@@ -120,12 +120,12 @@ We use the [SMACCS](https://smacss.com/book/type-state) naming convention for (g
 **Good**
 
 ```scss
-#{$module} {
+.foo {
 	padding: 0 0 0 1rem;
 
 	background: no-repeat;
 
-	&--modifier {
+	&:last-child {
 		background-repeat: repeat;
 	}
 }
@@ -436,6 +436,8 @@ $breakpoints: (
 ```
 
 ```scss
+$module '.foo';
+
 #{$module} {
 	padding: 1rem;
 
@@ -478,6 +480,8 @@ $breakpoints: (
 ```
 
 ```scss
+$module '.foo';
+
 #{$module} {
 	padding: 1rem;
 
