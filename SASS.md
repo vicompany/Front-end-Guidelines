@@ -672,33 +672,61 @@ $module: '.navigation';
 
 **Bad**
 
+```html
+<div class="toggle">
+	<button type="button" class="toggle__button">Hover me</button>
+	<div class="toggle__body">
+		<p>The President is the CHAIRMAN of the Executive Committee and the Chief Executive Officer of the club chapter.</p>
+	</div>
+</div>
+```
+
 ```scss
-#{$module} {
-	position: fixed;
+$module: '.toggle';
 
-	&__element {
-		display: inline-block;
+#{$module}__button {
+	padding: 1rem;
 
-		&__link {
-			color: $black;
+	cursor: pointer;
+
+	&:hover {
+		+ #{$module}__body {
+			display: block;
 		}
 	}
+}
+
+#{$module}__body {
+	display: none;
 }
 ```
 
 **Good**
 
+```html
+<div class="toggle">
+	<button type="button" class="toggle__button">Hover me</button>
+	<div class="toggle__body">
+		<p>The President is the CHAIRMAN of the Executive Committee and the Chief Executive Officer of the club chapter.</p>
+	</div>
+</div>
+```
+
 ```scss
-#{$module} {
-	position: fixed;
+$module: '.toggle';
+
+#{$module}__button {
+	padding: 1rem;
+
+	cursor: pointer;
 }
 
-#{$module}__element {
-	display: inline-block;
-}
+#{$module}__body {
+	display: none;
 
-#{$module}__link {
-	color: $black;
+	#{$module}__button:hover + & {
+		display: block;
+	}
 }
 ```
 
