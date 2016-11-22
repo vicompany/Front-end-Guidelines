@@ -610,6 +610,68 @@ $module: '.form';
 
 **Bad**
 
+```html
+<nav>
+	<ul class="navigation">
+		<li class="navigation__item">
+			<a href="#" class="navigation__item__link">Home</a>
+		</li>
+		<li class="navigation__item">
+			<a href="#" class="navigation__item__link">Contact</a>
+		</li>
+	</ul>
+</nav>
+```
+
+```scss
+$module: '.navigation';
+
+#{$module} {
+	position: fixed;
+
+	&__item {
+		display: inline-block;
+
+		&__link {
+			text-decoration: none;
+		}
+	}
+}
+```
+
+**Good**
+
+```html
+<nav>
+	<ul class="navigation">
+		<li class="navigation__item">
+			<a href="#" class="navigation__link">Home</a>
+		</li>
+		<li class="navigation__item">
+			<a href="#" class="navigation__link">Contact</a>
+		</li>
+	</ul>
+</nav>
+```
+
+```scss
+$module: '.navigation';
+
+#{$module} {
+	position: fixed;
+}
+
+#{$module}__item {
+	display: inline-block;
+}
+
+#{$module}__link {
+	text-decoration: none;
+}
+```
+
+**Bad**
+
 ```scss
 #{$module} {
 	position: fixed;
