@@ -135,6 +135,7 @@ We use the [SMACCS](https://smacss.com/book/type-state) naming convention for (g
 
 ## Variable names
 
+* We use American English for naming variables. For example `color` instead of `colour`.
 * We recommend variable names to be prefixed by type: `$color-**` or `$font-**`
 * Names will be written in lowercase.
 * We use dashes to separate words in variable identifiers: `$font-size-xl`
