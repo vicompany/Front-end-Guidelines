@@ -955,7 +955,7 @@ $module: '.media';
 ```html
 <div class="media">
 	<div class="media__image">
-		<img class="img" src="/img/club/sven.png" alt="Road Captain">
+		<img class="image" src="/img/club/sven.png" alt="Road Captain">
 	</div>
 	<div class="media__body">
 		<p>The Road Captain is responsible for planning and organizing all club runs.</p>
