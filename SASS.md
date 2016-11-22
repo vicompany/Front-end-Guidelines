@@ -75,9 +75,9 @@ We recommend creating JavaScript-specific classes with a `.js-` hook as prefix t
 
 ## States
 
-We use the [SMACCS](https://smacss.com/book/type-state) naming convention for (global) states like `.is-active` and `.is-collapsed`.
+We use the [SMACCS](https://smacss.com/book/type-state) naming convention for (global) states like `.is-active` and `.is-collapsed`. For a good set of state hooks, click [here](https://github.com/chris-pearce/css-guidelines#state-hooks).
 * State styles indicate a JavaScript dependency.
-* State styles are easy to select and apply with JavaScript.
+* It is easy to use JavaScript to apply (generic) state hooks to a component.
 * The property value of a state may be overwritten within a module.
 
 ```scss
@@ -613,7 +613,7 @@ $module: '.form';
 
 * An element is separated from a block name by a double underscore: `__`
 * We don't use the parent selector `&` to define elements.
-* We don't combine element names `.module__element__link` when nesting elements. Read more about this [here](http://getbem.com/faq/#css-nested-elements).
+* We don't use a grandchild selector `.module__element__nested` to reference and element that is two (or more) levels deep. Read more about this [here](http://getbem.com/faq/#css-nested-elements).
 
 **Bad**
 
@@ -743,7 +743,7 @@ $module: '.toggle';
 * Modifiers will be defined within the module using the parent selector: `&`
 * We don't use modifiers to define states.
 * We don't extend the base module, instead we use multiple classes: `<a class="btn btn–-large">I'm large</a>`
-* We don't use classnames with double modifiers: `btn--inverted--large`
+* We don't use single classnames containing multiple modifiers: `btn--inverted--large`
 
 **Bad**
 
