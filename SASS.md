@@ -28,7 +28,7 @@ We use [style-lint](https://github.com/vicompany/stylelint-config-vi) to enforce
 
 * Write rule reclarations (selector and properties) in lowercase.
 * Use dashes, not camelCase in class names.
-	* Double underscores `__` and double dashes `--` are allowed when using BEM.
+	* Double underscores `__` and double dashes `--` are allowed when using [BEM](#bem).
 * Do not use ID selectors.
 
 **Bad**
@@ -100,8 +100,8 @@ We use the [SMACCS](https://smacss.com/book/type-state) naming convention for (g
 
 ## Property declarations
 
-* We use the property shorthand to define property values
-* When overwriting properties we use the more specific selector
+* We use the property shorthand to define property values.
+* When overwriting properties we use the more specific selector.
 
 **Bad**
 
@@ -136,9 +136,9 @@ We use the [SMACCS](https://smacss.com/book/type-state) naming convention for (g
 ## Variable names
 
 * We recommend variable names to be prefixed by type: `$color-**` or `$font-**`
-* Names will be written in lowercase
+* Names will be written in lowercase.
 * We use dashes to separate words in variable identifiers: `$font-size-xl`
-* Variables only used within one module will be prefixed by the name of the module:
+* Variables only used within one module will be prefixed by the name of the module.
 
 **Bad**
 
@@ -226,7 +226,7 @@ $card-color-border: #ff69b4;
 
 ## Property order
 
-* We sort our properties grouped by type
+* We sort our properties grouped by type:
 	* Positioning
 	* Transforms
 	* Display & box model
@@ -567,7 +567,7 @@ $module: '.block';
 ## Block
 
 * Module- and filenames won't be abbreviated and are written in lowercase with dashes.
-* Module- and filenames are written in singular form: `_button.scss`.
+* Module- and filenames are written in singular form: `_button.scss`
 * We define the module (class) name on the top of the block in a `$module` variable.
 
 **Bad**
