@@ -735,8 +735,72 @@ $module: '.toggle';
 * An element modifier is separated from a block (or element) name by a double dash: `--`
 * Modifiers will be defined within the module using the parent selector: `&`
 * We don't use modifiers to define states.
-* We don't extend the base module, instead we use multiple classes: `<a class="btn btn–-big">I'm big</a>`
-* We don't use classnames with double modifiers: `btn--inverted--big`
+* We don't extend the base module, instead we use multiple classes: `<a class="btn btn–-large">I'm large</a>`
+* We don't use classnames with double modifiers: `btn--inverted--large`
+
+**Bad**
+
+```scss
+$module: '.button';
+
+#{$module} {
+	padding: 1rem;
+}
+
+#{$module}--large {
+	padding: 2rem;
+}
+```
+
+**Good**
+
+```scss
+$module: '.button';
+
+#{$module} {
+	padding: 1rem;
+
+	&--large {
+		padding: 2rem;
+	}
+}
+```
+
+**Bad**
+
+```html
+<div class="notification notification--visible">There is an error!</div>
+```
+
+```scss
+$module: '.notification';
+
+#{$module} {
+	display: none;
+
+	&--visible {
+		display: block;
+	}
+}
+```
+
+**Good**
+
+```html
+<div class="notification is-visible">There is an error!</div>
+```
+
+```scss
+$module: '.notification';
+
+#{$module} {
+	display: none;
+
+	&.is-visible {
+		display: block;
+	}
+}
+```
 
 **Bad**
 
@@ -801,129 +865,17 @@ $module: '.button';
 **Bad**
 
 ```html
-<nav class="navigation--stacked">
-	<ul class="navigation__list">
-		<li class="navigation__item">
-			<a href="#" class="navigation__link">Home</a>
-		</li>
-		<li class="navigation__item">
-			<a href="#" class="navigation__link">About</a>
-			<ul class="navigation__list--sub">
-				<li class="navigation__item">
-					<a href="#" class="navigation__link">Members</a>
-				</li>
-				<li class="navigation__item">
-					<a href="#" class="navigation__link">Join us</a>
-				</li>
-			</ul>
-		</li>
-		<li class="navigation__item">
-			<a href="#" class="navigation__link">Contact</a>
-		</li>
-	</ul>
-</nav>
 ```
 
 ```scss
-$module: '.navigation';
-
-#{$module} {
-	padding: 1rem;
-
-	&__item {
-		position: relative;
-
-		display: inline-block;
-
-		&:hover {
-			#{$module}__list--sub {
-				left: auto;
-			}
-		}
-	}
-
-	&__list {
-		width: 10rem;
-
-		&--sub {
-			@extend #{$module}__list;
-
-			position: absolute;
-      		left: -9999px;
-		}
-	}
-
-	&--stacked {
-		@extend #{$module};
-
-		padding: 2rem;
-
-		#{$module}__item {
-			display: block;
-		}
-	}
-}
 ```
 
 **Good**
 
 ```html
-<nav class="navigation navigation--stacked">
-	<ul class="navigation__list">
-		<li class="navigation__item">
-			<a href="#" class="navigation__link">Home</a>
-		</li>
-		<li class="navigation__item">
-			<a href="#" class="navigation__link">About</a>
-			<ul class="navigation__list navigation__list--sub">
-				<li class="navigation__item">
-					<a href="#" class="navigation__link">Members</a>
-				</li>
-				<li class="navigation__item">
-					<a href="#" class="navigation__link">Join us</a>
-				</li>
-			</ul>
-		</li>
-		<li class="navigation__item">
-			<a href="#" class="navigation__link">Contact</a>
-		</li>
-	</ul>
-</nav>
 ```
 
 ```scss
-$module: '.navigation';
-
-#{$module} {
-	padding: 1rem;
-
-    &--stacked {
-      padding: 2rem;
-    }
-}
-
-#{$module}__item {
-  position: relative;
-
-  display: inline-block;
-
-  #{$module}--stacked & {
-    display: block;
-  }
-}
-
-#{$module}__list {
-    width: 10rem;
-
-    &--sub {
-      position: absolute;
-      left: -9999px;
-
-      #{$module}__item:hover > & {
-        left: auto;
-      }
-    }
-}
 ```
 
 ## Module nesting
