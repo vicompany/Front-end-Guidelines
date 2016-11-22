@@ -1,5 +1,7 @@
 # SASS guidelines
 
+*Our styleguide for writing maintainable and scalable CSS and Sass.*
+
 ## Table of contents
 - [CSS](#css)
   * [Formatting](#formatting)
