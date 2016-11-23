@@ -614,7 +614,7 @@ $module: '.form';
 * An element is separated from a block name by a double underscore: `__`
 * We don't use the parent selector `&` to define elements.
 * We don't use a grandchild selector `.module__element__nested` to reference and element that is two (or more) levels deep. Read more about this [here](http://getbem.com/faq/#css-nested-elements) and [here](https://en.bem.info/methodology/quick-start/#element).
-* We recommended not to apply styles to sibling elements (or another elements living in the same block) within an element selector.
+* We discourage using any kind of sibling selectors within an element.
 
 **Bad**
 
