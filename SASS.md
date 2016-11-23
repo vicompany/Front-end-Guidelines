@@ -533,6 +533,8 @@ BEM ensures that everyone who participates in the development of a project works
 * No tag name or ID selectors.
 * No dependencies on other blocks or elements. More about module nesting can be read [here](#module-nesting).
 
+Advanced BEM example demonstrating different techniques can be found visiting [this codepen](http://codepen.io/edw1n/pen/rWyRxY).
+
 **Bad**
 
 ```scss
