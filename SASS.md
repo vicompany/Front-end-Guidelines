@@ -745,7 +745,7 @@ $module: '.toggle';
 * We don't use modifiers to define states.
 * We don't extend the base module, instead we use multiple classes: `<a class="btn btn–-large">I'm large</a>`
 * We don't use single classnames containing multiple modifiers: `btn--inverted--large`
-* Applying or overwriting styles to an element within a block modifier will be done within the element selector and not by targeting the element within the block modifier.
+* If a block modifier changes an element's style, that style should be defined in the respective element block.
 
 **Bad**
 
