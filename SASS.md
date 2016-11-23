@@ -613,7 +613,8 @@ $module: '.form';
 
 * An element is separated from a block name by a double underscore: `__`
 * We don't use the parent selector `&` to define elements.
-* We don't use a grandchild selector `.module__element__nested` to reference and element that is two (or more) levels deep. Read more about this [here](http://getbem.com/faq/#css-nested-elements).
+* We don't use a grandchild selector `.module__element__nested` to reference and element that is two (or more) levels deep. Read more about this [here](http://getbem.com/faq/#css-nested-elements) and [here](https://en.bem.info/methodology/quick-start/#element).
+* We recommended not to apply styles to sibling elements (or another elements living in the same block) within an element selector.
 
 **Bad**
 
@@ -683,7 +684,7 @@ $module: '.navigation';
 <div class="toggle">
 	<button type="button" class="toggle__button">Hover me</button>
 	<div class="toggle__body">
-		<p>The President is the CHAIRMAN of the Executive Committee and the Chief Executive Officer of the club chapter.</p>
+		<p>The President is the chairman of the club chapter.</p>
 	</div>
 </div>
 ```
@@ -714,7 +715,7 @@ $module: '.toggle';
 <div class="toggle">
 	<button type="button" class="toggle__button">Hover me</button>
 	<div class="toggle__body">
-		<p>The President is the CHAIRMAN of the Executive Committee and the Chief Executive Officer of the club chapter.</p>
+		<p>The President is the chairman of the club chapter.</p>
 	</div>
 </div>
 ```
@@ -744,6 +745,7 @@ $module: '.toggle';
 * We don't use modifiers to define states.
 * We don't extend the base module, instead we use multiple classes: `<a class="btn btn–-large">I'm large</a>`
 * We don't use single classnames containing multiple modifiers: `btn--inverted--large`
+* Applying or overwriting styles to an element within a block modifier will be done within the element selector and not by targeting the element within the block modifier.
 
 **Bad**
 
