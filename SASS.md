@@ -873,14 +873,6 @@ $module: '.button';
 
 **Bad**
 
-```html
-<div class="card">
-	<div class="card__body">
-		<p>The Vice-President shall coordinate all committees and supervise plans for all club events.</p>
-	</div>
-</div>
-```
-
 ```scss
 $module: '.card';
 
@@ -902,14 +894,6 @@ $module: '.card';
 ```
 
 **Good**
-
-```html
-<div class="card">
-	<div class="card__body">
-		<p>The Vice-President shall coordinate all committees and supervise plans for all club events.</p>
-	</div>
-</div>
-```
 
 ```scss
 $module: '.card';
