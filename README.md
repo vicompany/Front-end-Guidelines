@@ -31,7 +31,8 @@ _All code in any code-base should look like a single person typed it, no matter 
 
 ## Tooling
 
-* We use [Grunt](http://gruntjs.com/) for compiling JS, CSS, optimization and other tasks.
+* We use [Gulp](https://gulpjs.com/) for compiling JS, CSS, optimization and other tasks.
+* For smaller projects we often just use [npm scripts](https://docs.npmjs.com/misc/scripts).
 
 ## Editor plugins
 
@@ -45,7 +46,7 @@ Whether you use [Visual Studio Code](https://code.visualstudio.com), [Sublime Te
 
 ### Evergreen Browsers
 
-The term _evergreen browser_ refers to a browser that gets updated automatically to future versions. 
+The term _evergreen browser_ refers to a browser that gets updated automatically to future versions.
 Therefore browser versions become less of a focus and, more importantly, new web technology becomes available to users and us developers quicker.
 
 * [The Evergreen Web by Scott Hanselman](http://www.hanselman.com/blog/TheEvergreenWeb.aspx)
