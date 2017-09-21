@@ -1,4 +1,4 @@
-# Front-end at VI Company - Work in Progress
+# Front-end at VI Company
 
 _All code in any code-base should look like a single person typed it, no matter how many people contributed._
 
