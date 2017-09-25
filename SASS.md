@@ -147,6 +147,28 @@ We use the [SMACCS](https://smacss.com/book/type-state) naming convention for (g
 **Bad**
 
 ```scss
+$text: #1e283c;
+$brand-1: #e00;
+
+$border-s: 2px;
+
+$weight-regular: 400;
+```
+
+**Good**
+
+```scss
+$color-text: #1e283c;
+$color-brand-1: #e00;
+
+$border-width-s: 2px;
+
+$font-weight-regular: 400;
+```
+
+**Bad**
+
+```scss
 $module: '.card';
 
 $card_width: 24rem;
