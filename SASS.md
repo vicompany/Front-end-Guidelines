@@ -21,7 +21,6 @@
   * [Modifier](#modifier)
   * [Module nesting](#module-nesting)
   * [Module mix](#module-mix)
-- [Architecture](#architecture)
 
 # CSS
 
@@ -1018,6 +1017,3 @@ $module: '.logo';
 	padding: 1rem;
 }
 ```
-
-# Architecture
-
