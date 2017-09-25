@@ -79,14 +79,15 @@ We use the [SMACCS](https://smacss.com/book/type-state) naming convention for (g
 * State styles indicate a JavaScript dependency.
 * It is easy to use JavaScript to apply (generic) state hooks to a component.
 * The property value of a state may be overwritten within a module.
+* You are allowed to use the `!important` rule on a style declaration. (Note: Using the `!important` rule is disabled by default by our Stylelint configuration. Check the [Stylelint configuration documentation](https://github.com/stylelint/stylelint/blob/master/docs/user-guide/configuration.md) for more information on how to disable this rule for states.)
 
 ```scss
 .is-hidden {
-	display: none;
+	display: none !important;
 }
 
 .is-visible {
-	display: block;
+	display: block !important;
 }
 ```
 
