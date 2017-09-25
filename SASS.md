@@ -456,7 +456,7 @@ $breakpoints: (
 	'small':		35rem,
 	'medium':		50rem,
 	'large':		65rem,
-	'extra-large': 	80rem,
+	'extra-large': 		80rem,
 	'huge':			90rem
 );
 ```
