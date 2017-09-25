@@ -21,6 +21,7 @@
   * [Modifier](#modifier)
   * [Module nesting](#module-nesting)
   * [Module mix](#module-mix)
+- [Architecture](#architecture)
 
 # CSS
 
@@ -254,13 +255,14 @@ $card-color-border: #ff69b4;
 
 * We sort our properties grouped by type:
 	* Positioning
-	* Transforms
-	* Display & box model
+	* Display & flex
+	* Transforms & floats
+	* Box model
 	* Colors & typography
 	* Backgrounds & borders
 	* Animation
-	* Other
 	* Transitions
+	* Other/unspecified properties can be placed anywhere inbetween
 * Although we recommend a newline between the different property groups, feel free to combine different groups in smaller modules.
 * For complete list of the propety order see our [stylelint-config](https://github.com/vicompany/stylelint-config-vi/blob/master/index.js).
 
@@ -270,20 +272,22 @@ $card-color-border: #ff69b4;
 $module: '.motor';
 
 #{$module} {
-	float: left;
-	box-sizing: content-box;
-	right: 0;
-	opacity: 0.9;
+	display: flex;
+	margin: 1rem;
 	position: relative;
-	display: block;
-	background: $gray;
-	color: $branding-1;
-	text-align: right;
-	border: dashed;
-	animation: infinite;
+	right: 0;
+	z-index: 2;
+	flex-direction: column;
+	align-items: flex-end;
 	transform: translate(2rem);
-	transition: height 2s;
+	animation: infinite;
+	text-align: right;
+	color: $color-branding-1;
+	border: dashed;
+	background: $color-gray;
 	cursor: pointer;
+	transition: height 2s;
+	opacity: 0.9;
 }
 ```
 
@@ -295,17 +299,21 @@ $module: '.motor';
 #{$module} {
 	position: relative;
 	right: 0;
+	z-index: 2;
+
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
 
 	transform: translate(2rem);
-	float: left;
 
-	box-sizing: content-box;
-	display: block;
+	margin: 1rem;
 
-	color: $branding-1;
+	color: $color-branding-1;
 	text-align: right;
+	writing-mode: vertical-rl;
 
-	background: $gray;
+	background: $color-gray;
 	border: dashed;
 
 	animation: infinite;
@@ -313,25 +321,6 @@ $module: '.motor';
 	cursor: pointer;
 	opacity: 0.9;
 
-	transition: height 2s;
-}
-```
-
-```scss
-$module: '.motor';
-
-#{$module} {
-	position: relative;
-	right: 0;
-
-	float: left;
-	display: block;
-
-	color: $branding-1;
-	text-align: right;
-
-	animation: infinite;
-	opacity: 0.9;
 	transition: height 2s;
 }
 ```
@@ -1029,3 +1018,6 @@ $module: '.logo';
 	padding: 1rem;
 }
 ```
+
+# Architecture
+
