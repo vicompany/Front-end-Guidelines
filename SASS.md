@@ -373,22 +373,22 @@ ${$module} {
 	}
 
 	&:hover {
-		color: $branding-2;
+		color: $color-branding-2;
 
 		#{$module}__element {
 		}
 	}
 
 	&[data-module='widget'] {
-		border: 4px solid $red;
+		border: 4px solid $color-red;
 	}
 
 	&:not(:last-of-type) {
-		border-bottom: 1px solid $gray;
+		border-bottom: 1px solid $color-gray;
 	}
 
 	&.is-active {
-		background: $branding-3;
+		background: $color-branding-3;
 	}
 ```
 
@@ -402,14 +402,14 @@ ${$module} {
 	padding: 1rem;
 
 	&:hover {
-		color: $branding-2;
+		color: $color-branding-2;
 
 		#{$module}__element {
 		}
 	}
 
 	&:not(:last-of-type) {
-		border-bottom: 1px solid $gray;
+		border-bottom: 1px solid $color-gray;
 	}
 
 	&:before {
@@ -417,11 +417,11 @@ ${$module} {
 	}
 
 	&[data-module='widget'] {
-		border: 4px solid $red;
+		border: 4px solid $color-red;
 	}
 
 	&.is-active {
-		background: $branding-3;
+		background: $color-branding-3;
 	}
 
 	@include respond-to(medium) {
@@ -948,7 +948,7 @@ $module: '.media';
 #{$module} {
 	padding: 1rem;
 
-	background: $gray;
+	background: $color-gray;
 
 	.image {
 		margin: 1rem;
@@ -975,7 +975,7 @@ $module: '.media';
 #{$module} {
 	padding: 1rem;
 
-	background: $gray;
+	background: $color-gray;
 }
 
 #{$module}__image {
