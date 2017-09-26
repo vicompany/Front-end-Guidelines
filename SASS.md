@@ -455,7 +455,7 @@ $module '.foo';
 #{$module} {
 	padding: 1rem;
 
-	border: 1px dashed $white;
+	border: 1px dashed $color-white;
 
 	@include respond-to(medium) {
 		padding: 2rem;
@@ -477,7 +477,7 @@ $module '.foo';
 }
 
 #{$module}__item {
-	background: $black;
+	background: $color-black;
 
 	font-size: $font-size-s;
 }
@@ -499,7 +499,7 @@ $module '.foo';
 #{$module} {
 	padding: 1rem;
 
-	border: 1px dashed $white;
+	border: 1px dashed $color-white;
 
 	&:after {
 		margin: 1rem;
@@ -517,7 +517,7 @@ $module '.foo';
 }
 
 #{$module}__item {
-	background: $black;
+	background: $color-black;
 
 	font-size: $font-size-s;
 
@@ -555,11 +555,11 @@ Advanced BEM example demonstrating different techniques can be found visiting [t
 	p {
 		padding: 0;
 
-		color: $white;
+		color: $color-white;
 	}
 
 	.other-block {
-		background: $black;
+		background: $color-black;
 	}
 }
 ```
@@ -576,11 +576,11 @@ $module: '.block';
 #{$module}__text {
 	padding: 0;
 
-	color: $white;
+	color: $color-white;
 }
 
 #{$module}__other-block {
-	background: $black;
+	background: $color-black;
 }
 ```
 
@@ -836,14 +836,14 @@ $module: '.button';
 #{$module} {
 	padding: 1rem;
 
-	color: $white;
+	color: $color-white;
 
-	background: $black;
+	background: $color-black;
 
 	&--inverted {
 		@extend #{$module};
 
-		color: $black;
+		color: $color-black;
 
 		background: transparent;
 
@@ -868,12 +868,12 @@ $module: '.button';
 #{$module} {
 	padding: 1rem;
 
-	color: $white;
+	color: $color-white;
 
-	background: $black;
+	background: $color-black;
 
 	&--inverted {
-		color: $black;
+		color: $color-black;
 
 		background: transparent;
 	}
@@ -890,7 +890,7 @@ $module: '.button';
 $module: '.card';
 
 #{$module} {
-	border: 1px solid $black;
+	border: 1px solid $color-black;
 
 	&--hero {
 		background: center / cover;
@@ -912,7 +912,7 @@ $module: '.card';
 $module: '.card';
 
 #{$module} {
-	border: 1px solid $black;
+	border: 1px solid $color-black;
 
 	&--hero {
 		background: center / cover;
@@ -999,7 +999,7 @@ Mixing of modules is a technique for using different BEM entities on a single DO
 $module: '.header';
 
 #{$module} {
-	background: $white;
+	background: $color-white;
 }
 
 #{$module}__logo {
