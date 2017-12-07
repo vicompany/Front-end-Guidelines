@@ -169,12 +169,10 @@ $font-weight-regular: 400;
 **Bad**
 
 ```scss
-$module: '.card';
-
 $card_width: 24rem;
 $cardBorderColor: #ff69b4;
 
-#{$module} {
+.card {
 	width: $card_width;
 	margin-left: $cardWidth / 2;
 
@@ -185,12 +183,10 @@ $cardBorderColor: #ff69b4;
 **Good**
 
 ```scss
-$module: '.card';
-
 $card-width: 24rem;
 $card-color-border: #ff69b4;
 
-#{$module} {
+.card {
 	width: $card-width;
 	margin-left: $card-width / 2;
 
@@ -268,9 +264,7 @@ $card-color-border: #ff69b4;
 **Bad**
 
 ```scss
-$module: '.motor';
-
-#{$module} {
+.block {
 	display: flex;
 	margin: 1rem;
 	position: relative;
@@ -293,9 +287,7 @@ $module: '.motor';
 **Good**
 
 ```scss
-$module: '.motor';
-
-#{$module} {
+.block {
 	position: relative;
 	right: 0;
 	z-index: 2;
@@ -343,7 +335,7 @@ $module: '.motor';
 **Bad**
 
 ```scss
-${$module} {
+.block {
 	&__selector {
 		&:first-of-type {
 			p {
@@ -357,7 +349,7 @@ ${$module} {
 ```
 
 ```scss
-#{$module} {
+.block {
 	&:before {
 		content: 'foo';
 	}
@@ -374,9 +366,6 @@ ${$module} {
 
 	&:hover {
 		color: $color-branding-2;
-
-		#{$module}__element {
-		}
 	}
 
 	&[data-module='widget'] {
@@ -395,7 +384,7 @@ ${$module} {
 **Good**
 
 ```scss
-#{$module} {
+.block {
 	@extend %container;
 	@include clearfix;
 
@@ -403,9 +392,6 @@ ${$module} {
 
 	&:hover {
 		color: $color-branding-2;
-
-		#{$module}__element {
-		}
 	}
 
 	&:not(:last-of-type) {
@@ -450,9 +436,7 @@ $breakpoints: (
 ```
 
 ```scss
-$module '.foo';
-
-#{$module} {
+.foo {
 	padding: 1rem;
 
 	border: 1px dashed $color-white;
@@ -460,7 +444,7 @@ $module '.foo';
 	@include respond-to(medium) {
 		padding: 2rem;
 
-		#{$module}__item {
+		.foo__item {
 			font-size: $font-size-m;
 		}
 	}
@@ -476,7 +460,7 @@ $module '.foo';
 	}
 }
 
-#{$module}__item {
+.foo__item {
 	background: $color-black;
 
 	font-size: $font-size-s;
@@ -494,9 +478,7 @@ $breakpoints: (
 ```
 
 ```scss
-$module '.foo';
-
-#{$module} {
+.foo {
 	padding: 1rem;
 
 	border: 1px dashed $color-white;
@@ -516,7 +498,7 @@ $module '.foo';
 	}
 }
 
-#{$module}__item {
+.foo__item {
 	background: $color-black;
 
 	font-size: $font-size-s;
@@ -558,7 +540,7 @@ Advanced BEM example demonstrating different techniques can be found visiting [t
 		color: $color-white;
 	}
 
-	.other-block {
+	.item {
 		background: $color-black;
 	}
 }
@@ -567,19 +549,17 @@ Advanced BEM example demonstrating different techniques can be found visiting [t
 **Good**
 
 ```scss
-$module: '.block';
-
-#{$module} {
+.block {
 	padding: 1rem;
 }
 
-#{$module}__text {
+.block__text {
 	padding: 0;
 
 	color: $color-white;
 }
 
-#{$module}__other-block {
+.block__item {
 	background: $color-black;
 }
 ```
@@ -588,7 +568,6 @@ $module: '.block';
 
 * Module- and filenames won't be abbreviated and are written in lowercase with dashes.
 * Module- and filenames are written in singular form: `_button.scss`
-* We define the module (class) name on the top of the block in a `$module` variable.
 
 **Bad**
 
@@ -607,17 +586,13 @@ $module: '.block';
 **Good**
 
 ```scss
-$module: '.button-group';
-
-#{$module} {
+.button-group {
 	position: absolute;
 }
 ```
 
 ```scss
-$module: '.form';
-
-#{$module} {
+.form {
 	padding: 1rem;
 }
 ```
@@ -645,9 +620,7 @@ $module: '.form';
 ```
 
 ```scss
-$module: '.navigation';
-
-#{$module} {
+.navigation {
 	position: fixed;
 
 	&__item {
@@ -676,17 +649,15 @@ $module: '.navigation';
 ```
 
 ```scss
-$module: '.navigation';
-
-#{$module} {
+.navigation {
 	position: fixed;
 }
 
-#{$module}__item {
+.navigation__item {
 	display: inline-block;
 }
 
-#{$module}__link {
+.navigation__link {
 	text-decoration: none;
 }
 ```
@@ -703,21 +674,19 @@ $module: '.navigation';
 ```
 
 ```scss
-$module: '.toggle';
-
-#{$module}__button {
+.toggle__button {
 	padding: 1rem;
 
 	cursor: pointer;
 
 	&:hover {
-		+ #{$module}__body {
+		+ .toggle__body {
 			display: block;
 		}
 	}
 }
 
-#{$module}__body {
+.toggle__body {
 	display: none;
 }
 ```
@@ -734,18 +703,16 @@ $module: '.toggle';
 ```
 
 ```scss
-$module: '.toggle';
-
-#{$module}__button {
+.toggle__button {
 	padding: 1rem;
 
 	cursor: pointer;
 }
 
-#{$module}__body {
+.toggle__body {
 	display: none;
 
-	#{$module}__button:hover + & {
+	.toggle__button:hover + & {
 		display: block;
 	}
 }
@@ -763,13 +730,11 @@ $module: '.toggle';
 **Bad**
 
 ```scss
-$module: '.button';
-
-#{$module} {
+.button {
 	padding: 1rem;
 }
 
-#{$module}--large {
+.button--large {
 	padding: 2rem;
 }
 ```
@@ -777,9 +742,7 @@ $module: '.button';
 **Good**
 
 ```scss
-$module: '.button';
-
-#{$module} {
+.button {
 	padding: 1rem;
 
 	&--large {
@@ -795,9 +758,7 @@ $module: '.button';
 ```
 
 ```scss
-$module: '.notification';
-
-#{$module} {
+.notification {
 	display: none;
 
 	&--visible {
@@ -813,9 +774,7 @@ $module: '.notification';
 ```
 
 ```scss
-$module: '.notification';
-
-#{$module} {
+.notification {
 	display: none;
 
 	&.is-visible {
@@ -831,9 +790,7 @@ $module: '.notification';
 ```
 
 ```scss
-$module: '.button';
-
-#{$module} {
+.button {
 	padding: 1rem;
 
 	color: $color-white;
@@ -841,14 +798,14 @@ $module: '.button';
 	background: $color-black;
 
 	&--inverted {
-		@extend #{$module};
+		@extend .button;
 
 		color: $color-black;
 
 		background: transparent;
 
 		&--large {
-			@extend #{$module}--inverted;
+			@extend .button--inverted;
 
 			padding: 2rem;
 		}
@@ -863,9 +820,7 @@ $module: '.button';
 ```
 
 ```scss
-$module: '.button';
-
-#{$module} {
+.button {
 	padding: 1rem;
 
 	color: $color-white;
@@ -887,21 +842,19 @@ $module: '.button';
 **Bad**
 
 ```scss
-$module: '.card';
-
-#{$module} {
+.card {
 	border: 1px solid $color-black;
 
 	&--hero {
 		background: center / cover;
 
-		#{$module}__body {
+		.card__body {
 			padding-top: 10rem;
 		}
 	}
 }
 
-#{$module}__body {
+.card__body {
 	padding: 1rem;
 }
 ```
@@ -909,9 +862,7 @@ $module: '.card';
 **Good**
 
 ```scss
-$module: '.card';
-
-#{$module} {
+.card {
 	border: 1px solid $color-black;
 
 	&--hero {
@@ -919,10 +870,10 @@ $module: '.card';
 	}
 }
 
-#{$module}__body {
+.card__body {
 	padding: 1rem;
 
-	#{$module}--hero & {
+	.card--hero & {
 		padding-top: 10rem;
 	}
 }
@@ -943,9 +894,7 @@ To avoid positiong or styling of blocks or elements within another block, module
 ```
 
 ```scss
-$module: '.media';
-
-#{$module} {
+.media {
 	padding: 1rem;
 
 	background: $color-gray;
@@ -970,15 +919,13 @@ $module: '.media';
 ```
 
 ```scss
-$module: '.media';
-
-#{$module} {
+.media {
 	padding: 1rem;
 
 	background: $color-gray;
 }
 
-#{$module}__image {
+.media__image {
 	margin: 1rem;
 }
 ```
@@ -996,13 +943,11 @@ Mixing of modules is a technique for using different BEM entities on a single DO
 ```
 
 ```scss
-$module: '.header';
-
-#{$module} {
+.header {
 	background: $color-white;
 }
 
-#{$module}__logo {
+.header__logo {
 	&:hover {
 		transform: scale(2);
 	}
@@ -1010,9 +955,7 @@ $module: '.header';
 ```
 
 ```scss
-$module: '.logo';
-
-#{$module} {
+.logo {
 	max-width: 10rem;
 	padding: 1rem;
 }
