@@ -54,9 +54,9 @@ Therefore browser versions become less of a focus and, more importantly, new web
 
 ### Internet Explorer 11
 
-We do **not support Internet Explorer 11** anymore. This browser still gets updated, but its [usage is too low](http://gs.statcounter.com/browser-market-share/all/netherlands) to justify the extra effort that is needed to make modern code to run on this browser.
+We do **not support Internet Explorer 11** anymore. This browser still gets updated, but its [usage is too low](http://gs.statcounter.com/browser-market-share/all/netherlands) to justify the extra effort that is needed to make modern code run on this browser:
 
 - Development time increases (around 10% to 30%) which could be spent on new features or quality improvement. 
 - Performance decreases, because extra code needs to be added to make it even work.
-- You create [Technical debt](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/The-perils-of-using-Internet-Explorer-as-your-default-browser/ba-p/331732) by using _hacks and workarounds_ which lead to less maintainable code.
+- You create [Technical debt](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/The-perils-of-using-Internet-Explorer-as-your-default-browser/ba-p/331732) by using _hacks and workarounds_ which leads to less maintainable code.
 - Security isn't on par with modern and regularly updated browsers.
