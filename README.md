@@ -5,15 +5,15 @@ _All code in any code-base should look like a single person typed it, no matter 
 ## General
 
 * We highly regard Accessibility and Web Standards.
-* We use Progressive Enhancement as much as possible.
+* We use [Progressive Enhancement](https://www.gov.uk/service-manual/technology/using-progressive-enhancement) as much as possible.
 * We support the latest [Evergreen Browsers](#evergreen-browsers) (but often also older browsers, because of the previous points).
 
 ## JavaScript (ES2015+)
 
 * Codebase is modular JavaScript ([ES2015+](http://www.ecma-international.org/ecma-262/7.0/)).
 * Vanilla is preferred, but developers are free to choose a framework/library to their liking if it substantially improves product maintainability.
-* NPM modules are preferred over reinvention.
-* Our ES2015+ codebase is transpiled using [Browserify](http://browserify.org) and [Babel](https://babeljs.io) to ES5.
+* Reusable components (NPM modules) are preferred over [reinvention](https://www.freecodecamp.org/news/how-to-stand-on-shoulders-16e8cfbc127b/).
+* Our ES2015+ codebase is transpiled and bundled using [Rollup](https://rollupjs.org/) and [Babel](https://babeljs.io).
 * To improve browser compatibility, use [ponyfills](https://github.com/sindresorhus/ponyfill) or polyfills. The former is preferred.
 * Code is linted using [ESLint](http://eslint.org), following the rules defined in [VI Company's config](https://www.npmjs.com/package/eslint-config-vi).
 
@@ -27,12 +27,12 @@ _All code in any code-base should look like a single person typed it, no matter 
 
 ### Sass guidelines
 
-* See our [Sass guidelines](SASS.md)
+* See our [Sass guidelines](SASS.md).
 
 ## Tooling
 
-* We use [Gulp](https://gulpjs.com/) for compiling JS, CSS, optimization and other tasks.
-* For smaller projects we often just use [npm scripts](https://docs.npmjs.com/misc/scripts).
+* We use [npm scripts](https://docs.npmjs.com/misc/scripts) for compiling JS, CSS, optimization and other tasks.
+* See our [Front-end recipes](https://github.com/vicompany/front-end-recipes).
 
 ## Editor plugins
 
