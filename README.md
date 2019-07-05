@@ -22,7 +22,7 @@ _All code in any code-base should look like a single person typed it, no matter 
 * We write modular Sass using the `SCSS` [syntax](http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html#syntax).
 * We use [BEM](https://en.bem.info) for class names.
 * Combined with a sprinkle of [SMACSS](https://smacss.com) for states.
-* And we follow the [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture) approach for our project architecture, along with the [Atomic design](http://atomicdesign.bradfrost.com) methodology for setting up our components.
+* And we follow the [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture) approach for our project architecture.
 * We use [Stylelint](http://stylelint.io) and our own [config](https://www.npmjs.com/package/stylelint-config-vi) to lint our Sass code.
 
 ### Sass guidelines
