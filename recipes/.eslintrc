@@ -1,0 +1,6 @@
+{
+	"extends": "vi",
+	"env": {
+		"node": true
+	}
+}
