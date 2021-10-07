@@ -57,15 +57,16 @@ module.exports = (req, res, next) => {
 	res.setHeader('Enforce-CT', 'enforce, max-age=7776000');
 	res.setHeader('Referrer-Policy', 'no-referrer');
 	res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+	res.setHeader('Upgrade-Insecure-Requests', '1');
 	res.setHeader('X-Content-Type-Options', 'nosniff');
 	res.setHeader('X-Frame-Options', 'DENY');
+	res.setHeader('X-Permitted-Cross-Domain-Policies', 'none');
 	res.setHeader('X-XSS-Protection', '1; mode=block');
-	res.setHeader('Upgrade-Insecure-Requests', '1');
 
 	if (!isPathAsset(req.path)) {
 		res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
-		res.setHeader('Cross-Origin-Opener-Policy', 'unsafe-none');
-		res.setHeader('Cross-Origin-Resource-Policy', 'same-site');
+		res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+		res.setHeader('Cross-Origin-Resource-Policy', 'same-origin');
 
 		res.setHeader('Content-Security-Policy', Object.entries(contentSecurityPolicies)
 			.map(([policy, values]) => `${policy} ${values.join(' ')}`)
