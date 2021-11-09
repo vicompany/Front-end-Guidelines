@@ -23,14 +23,16 @@
 
 ## Security and Privacy
 
-### General Data Protection Regulation
-
-See [GDPR – A Practical Guide For Developers](https://techblog.bozho.net/gdpr-practical-guide-developers/).
+Our projects are often mission-critical and often contains personal information. In most of our stacks, the primary concern of front-end developers is cross-site scripting (XSS), though we are cautious dealing with data.
 
 ### Resources
 
 - https://owasp.org/www-project-secure-headers/
 - https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers#security
+
+### General Data Protection Regulation
+
+See [GDPR – A Practical Guide For Developers](https://techblog.bozho.net/gdpr-practical-guide-developers/).
 
 
 ## Quality Assurance
