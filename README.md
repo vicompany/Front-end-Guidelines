@@ -62,3 +62,8 @@ Frontend code must exhibit resilience by treating expected failure scenarios as 
 - **Trivial Situations (Expected Failures):** User input validation errors, non-existent records (HTTP 404), or empty search results must be managed via standard return types, not throw/catch.
 - **Exceptional Situations (Catastrophic Failures):** Use JavaScript exceptions only for unrecoverable faults (e.g., network disconnects, unhandled API errors, environment misconfiguration).
 - **Component Error Boundaries:** Interactive Islands (Tier 2) must implement local error boundaries to prevent catastrophic failure of the entire page due to an isolated component issue.
+
+## VI. Other sources
+
+- **Front-end Tech Radar:** See our [Front-end Tech Radar](https://github.com/vicompany/frontend-techradar) for more information about technologies used now and in the past.
+- **Front-end Boilerplate:** Check out our internally hosted Boilerplate containing our latest setup.
