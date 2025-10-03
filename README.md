@@ -1,62 +1,69 @@
-# Front-end at VI Company
+# Front-end at VI Company: Web Standards First
 
-_All code in any code-base should look like a single person typed it, no matter how many people contributed._
+This document defines the core standards for front-end development, prioritizing performance, maintainability, and strict adherence to modern web specifications.
 
-## General
+## I. Core Architectural Principle: HTML-First and Progressive Enhancement
 
-* We highly regard Accessibility and Web Standards.
-* We use [Progressive Enhancement](https://www.gov.uk/service-manual/technology/using-progressive-enhancement) as much as possible.
-* We actively support the latest [Evergreen Browsers](#evergreen-browsers) (but often our code works on older browsers, because of the previous points).
+Our primary goal is to deliver a robust, functional experience using minimal network resources. This is achieved by adhering to an **HTML-First** methodology, where client-side JavaScript is treated strictly as an enhancement.
 
-## JavaScript (ES2015+)
+### Standards
 
-* Codebase is modular JavaScript ([ES2015+](http://www.ecma-international.org/ecma-262/7.0/)).
-* Vanilla is preferred, but developers are free to choose a framework/library to their liking if it substantially improves product maintainability.
-* Reusable components (NPM modules) are preferred over [reinvention](https://www.freecodecamp.org/news/how-to-stand-on-shoulders-16e8cfbc127b/).
-* Our ES2015+ codebase is transpiled and bundled using [Rollup](https://rollupjs.org/) and [Babel](https://babeljs.io).
-* To improve browser compatibility, use [ponyfills](https://github.com/sindresorhus/ponyfill) or polyfills. The former is preferred.
-* Code is linted using [ESLint](http://eslint.org), following the rules defined in [VI Company's config](https://www.npmjs.com/package/eslint-config-vi).
+- **Static Baseline:** All pages must be fully functional and readable with JavaScript disabled.
+- **Island Architecture:** We implement the Island Architecture pattern, where all client-side logic is confined to small, independently hydrated, and self-contained units (islands).
+- **Minimal Payload:** JavaScript is only shipped to the client when the component explicitly requires interactivity. This strategy is managed via the **Astro** framework, which enforces server-side rendering by default and orchestrates selective client hydration.
 
-## CSS (Sass)
+## II. Interactivity and Encapsulation Tiers
 
-* We write modular Sass using the `SCSS` [syntax](http://www.sass-lang.com/documentation/file.SASS_REFERENCE.html#syntax).
-* We use [BEM](https://en.bem.info) for class names.
-* Combined with a sprinkle of [SMACSS](https://smacss.com) for states.
-* And we follow the [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture) approach for our project architecture.
-* We use [Stylelint](http://stylelint.io) and our own [config](https://www.npmjs.com/package/stylelint-config-vi) to lint our Sass code.
+Client-side interaction is introduced via a tiered dependency model. We prioritize native browser capabilities and encapsulation standards over monolithic frameworks.
 
-### Sass guidelines
+| **Tier**   | **Purpose**                                                                                             | **Primary Technology**                               | **Standard Utilized**                |
+| ---------- | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------ |
+| **Tier 1** | Simple DOM manipulation, event listeners, observers (e.g., menu toggle, carousel manual slide).         | **Native Browser APIs (Vanilla JS), Web Components** | DOM API, ES Modules, Custom Elements |
+| **Tier 2** | High-fidelity, reactive, and state-intensive experiences (e.g., trading grids, real-time data binding). | **Stateful UI Framework (Vue)**                      | Framework-Specific Reactivity        |
 
-* See our [Sass guidelines](SASS.md).
+### Standards
 
-## Tooling
+- **Tier 1 Preference:** Simple [HTML Web Components](https://blog.jim-nielsen.com/2023/html-web-components/) (using the light DOM instead of Shadow DOM) are the preferred mechanism for simple UI interactions. They offer automatic instantiation and life-cycle methods and a container for scoped JavaScript functionality while maintaining global CSS styling.
+- **Tier 2 Restriction:** Stateful frameworks (Tier 2) must be reserved only for areas where cross-component reactivity is complex and unavoidable. Hydration must be lazy (e.g., only when visible or idle).
 
-* We use [npm scripts](https://docs.npmjs.com/misc/scripts) for compiling JS, CSS, optimization and other tasks.
-* See our [Front-end recipes](https://github.com/vicompany/front-end-recipes).
+## III. Modularity and Code Organization (Monorepo)
 
-## Editor plugins
+A **Monorepo** structure is mandatory for promoting code sharing, managing dependencies, and establishing clear contract boundaries.
 
-Whether you use [Visual Studio Code](https://code.visualstudio.com), [Sublime Text](https://www.sublimetext.com) or any other editor. You should at least use the following plugins:
+### Structure
 
-* [EditorConfig](http://editorconfig.org)
-* [ESLint](http://eslint.org)
-* [Stylelint](http://stylelint.io)
+- **Applications (/apps/my-app):** The primary rendering layer (Astro pages/layouts) which **consumes** shared packages.
+- **Component Library (/packages/components):** Houses all reusable interface elements.
+- **Utilities & API (/packages/utils):** Contains loggers, formatters, API client wrappers, etc.
+- **Types (/packages/types):** Contains shared types and TypeScript definitions.
 
-## Additional information
+### Standards
 
-### Evergreen Browsers
+- **Shared Typing:** All data models and API contracts must be defined in the packages/types workspace and imported by both the API wrappers and UI components.
+- **Clear Ownership:** Any component logic that is not tied to the main application's routing or layout must reside within a package.
 
-The term _evergreen browser_ refers to a browser that gets updated automatically to future versions.
-Therefore browser versions become less of a focus and, more importantly, new web technology becomes available to users and us developers quicker.
+## IV. Data Handling and Asynchronous Integrity
 
-* [The Evergreen Web by Scott Hanselman](http://www.hanselman.com/blog/TheEvergreenWeb.aspx)
-* [Evergreen Browsers by Rob Eisenberg](http://eisenbergeffect.bluespire.com/evergreen-browsers/)
+The front-end must handle data consumption and long-running asynchronous tasks in a non-blocking and predictable manner, aligning with the server's transactional model.
 
-### Internet Explorer 11
+### Standards
 
-We do **not support Internet Explorer 11** anymore. This browser still gets updated, but its [usage is too low](http://gs.statcounter.com/browser-market-share/all/netherlands) to justify the extra effort that is needed to make modern code run on this browser:
+- **API Client Integrity:** All network communication must be abstracted behind client wrappers in packages/utils to centralize request handling, error normalization, and logging.
+- **Non-Blocking User Experience:** The UI must never block or wait synchronously for long backend processes (e.g., bulk report generation).
+  - Initiate the long-running process and confirm acceptance immediately.
+  - Implement web sockets or server-sent events to update the user on the job's completion status.
 
-- Development time increases (around 10% to 30%) which could be spent on new features or quality improvement. 
-- Performance decreases, because extra code needs to be added to make it even work.
-- You create [Technical debt](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/The-perils-of-using-Internet-Explorer-as-your-default-browser/ba-p/331732) by using _hacks and workarounds_ which leads to less maintainable code.
-- Security isn't on par with modern and regularly updated browsers.
+## V. Error Management and Resilience
+
+Frontend code must exhibit resilience by treating expected failure scenarios as part of the normal program flow, reserving exceptions for catastrophic failures.
+
+### Standards
+
+- **Trivial Situations (Expected Failures):** User input validation errors, non-existent records (HTTP 404), or empty search results must be managed via standard return types, not throw/catch.
+- **Exceptional Situations (Catastrophic Failures):** Use JavaScript exceptions only for unrecoverable faults (e.g., network disconnects, unhandled API errors, environment misconfiguration).
+- **Component Error Boundaries:** Interactive Islands (Tier 2) must implement local error boundaries to prevent catastrophic failure of the entire page due to an isolated component issue.
+
+## VI. Other sources
+
+- **Front-end Tech Radar:** See our [Front-end Tech Radar](https://github.com/vicompany/frontend-techradar) for more information about technologies used now and in the past.
+- **Front-end Boilerplate:** Check out our internally hosted Boilerplate containing our latest setup.
